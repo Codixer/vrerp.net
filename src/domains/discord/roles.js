@@ -27,7 +27,7 @@ const alwaysPresentTags = [
     '--- COLORS ---'
 ];
 const remarkedTag = '--- Remarked For ---';
-const otherRoles = [remarkedTag, 'Event Team'];
+const otherRoles = [remarkedTag];
 
 export async function uploadRoles() {
     const clientGuild = client.guilds.cache.get(guildId);
@@ -134,7 +134,7 @@ export async function syncMemberRoles(userId) {
     const allowedExtraTags = ['@everyone', 'servants', 'early access', 'Server Booster', 
     'Advisor', 'Event Host', 'Moderator', 'Staff Team', 'Verifier', 'Admin', 'Head Staff',
     '--- STAFF ---', 'Trial Mod', 'Moderation Team', 'Event Manager', 'Event Organiser', 
-    'Webmestre', 'Technical Team'];
+    'Webmestre', 'Technical Team', 'Event Team'];
     if ((profile.compliments) && (Object.keys(profile.compliments).length > 0)) {
         allProfileTags.push(remarkedTag);
         allProfileTags = allProfileTags.concat(Object.keys(profile.compliments).filter(key => profile.compliments[key].length > 0));
