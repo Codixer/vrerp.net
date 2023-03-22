@@ -45,7 +45,7 @@ export async function uploadRoles() {
     allTags = allTags.concat(complimentSpecialTags);
     const discordExistingRoles = Array.from(discordRoles.values()).map((role) => role.name);
     console.log(JSON.stringify(discordExistingRoles))
-    const discordMissingRoles = allTags;//.filter(t => !discordExistingRoles.includes(t));
+    const discordMissingRoles = allTags.filter(t => !discordExistingRoles.includes(t));
     console.log('discordMissingRoles', discordMissingRoles);
     Promise.allSettled(discordMissingRoles.map(async (tag) => {
         const role = await discordRoles.filter((r) => r.name == tag);
