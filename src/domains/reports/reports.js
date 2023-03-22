@@ -51,7 +51,7 @@ router.post('/api/reports', async (req, res, next) => {
         }
     }
     await Report.create(reportData);
-    discordLog(`New report made for \`${accusedUsername}\`, with the tags \`${reportData.tags == null ? `No tags selected` : reportData.tags.toString()}\` please check it out at: \n${ process.env.SERVER_URL }moderator/mediations`);
+    discordLog(`New report made for \`${reportData.accusedUsername == null ? `No username selected` : reportData.accusedUsername.toString()}\`, with the tags \`${reportData.tags == null ? `No tags selected` : reportData.tags.toString()}\` please check it out at: \n${ process.env.SERVER_URL }moderator/mediations`);
     res.send({ status: 'ok' });
 });
 
