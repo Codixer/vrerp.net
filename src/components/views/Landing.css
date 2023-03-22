@@ -1,0 +1,72 @@
+.landing {
+  margin-top:10vh !important;
+  margin-bottom:10vh !important;
+}
+
+
+
+.landing-login-btn {
+  width: 300px;
+}
+
+
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.titleMain {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  text-decoration: none !important;
+}
+
+.landing-image-container {
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.landing-image {
+  margin-top: 20px;
+  max-width: 240px;
+}
+
+
+.featured-row {
+  margin-left: 20px;
+  color: white;
+}
+
+.featured-row__posters {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 20px;
+}
+
+.featured-row__posters::-webkit-scrollbar {
+  display: none;
+}
+
+.featured-row__poster {
+  width: 100%;
+  object-fit: contain;
+  max-height: 100px;
+  margin-right: 10px;
+  transition: transform 450ms;
+}
+
+.featured-row__posterLarge {
+  max-height: 250px;
+}
+
+.featured-row__posterLarge:hover {
+  transform: scale(1.09);
+}
+
+.featured-row__poster:hover {
+  transform: scale(1.08);
+}

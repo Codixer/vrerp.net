@@ -1,0 +1,28 @@
+[2].getElementsByTagName('img')[0].src
+k = $("div [aria-label='Members']").children[2].getElementsByTagName('img')[0].src
+
+$("div [aria-label='Members']").children
+
+
+let allusers = [];
+
+setInterval(
+() => {
+  const ids = Array.from(
+    document.querySelector("div [aria-label='Members']").children).map((item) => {
+      const img = item.getElementsByTagName('img');
+      if (img.length === 0) { return; }
+      let urls = Array.from(img).map((item) => item.src);
+      urls = urls.filter(u => u.startsWith('https://cdn.discordapp.com/avatars/'));
+      if (urls.length === 0) { return; }
+      const aviurl = urls[0].split('/')[4];
+      return aviurl;
+    }).filter(u => u);
+  allusers = Array.from(new Set(allusers.concat(ids) ));
+  console.log(allusers.length);
+}, 500)
+
+
+
+
+https://discord.com/channels/567490793833496576/693094460115910766

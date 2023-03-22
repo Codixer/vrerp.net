@@ -1,0 +1,48 @@
+.sidemenu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 10vw;
+    min-width: 125px;
+    height: 100vh;
+    background-color: #282A36;
+    align-items: center;
+    padding: 10px;
+}
+
+.sidemenu-bar {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.sidemenu-menu {
+    height: 90%;
+}
+
+.sidemenu-admin {
+    display: block;
+}
+
+
+.sidemenu-avatar {
+    width:100%;
+}
+
+.sidemenu-item {
+    margin: 10px;
+}
+
+.sidemenu-item a {
+    text-decoration: none;
+}
+
+.sidemenu-item .nodecoration {
+    text-decoration: none !important;
+}
+
+@media only screen and (max-width: 1023px){
+    .sidemenu {
+        display: none;
+    }
+}

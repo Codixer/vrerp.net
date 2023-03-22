@@ -1,0 +1,18 @@
+.bubble {
+    /* border: 1px solid rgba(0,0,0,0.2); */
+    border: 1px solid #414558;
+    border-radius: 20%;
+    display: inline-block;
+    margin: 5px 10px 5px 10px;
+    padding: 5px;
+    cursor:default;
+}
+
+.bubbleSelectable {
+    cursor: pointer;
+}
+
+.bubbleSelected {
+    border: 1px solid #5865f2;
+    background-color: rgba(88, 101, 242, 0.2);
+}

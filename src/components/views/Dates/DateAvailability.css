@@ -1,0 +1,15 @@
+.date-availability-box-selected {
+    background-color: aqua;
+}
+
+.date-availability-box-selecting {
+    background-color: lightskyblue;
+}
+
+.date-availability-box-unavailable {
+    background-color: lightcoral;
+}
+
+.date-availability-box-available {
+    background-color: green;
+}

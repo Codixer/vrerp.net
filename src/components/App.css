@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1D1E26;
+    color: #F8F8F2;
+    font-family: Fira Code,monospace;
+    overflow-x:hidden
+}
+
+a {
+    color: #9580ff;
+}
+
+.graywhite {
+    color: rgba(255,255,255, 0.8) !important;
+}
+
+.appbody {
+    width: 100%;
+    min-height: 80vh;
+}
+
+.app {
+    background-color: #282A36;
+    align-items: center;
+    max-width: 630px;
+    margin:0 auto;
+    padding: 10px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.emoji {
+    width: 32px;
+}
+
+.drac-select-arrow {
+    color: #9580ff;
+}
+
+.assets {
+    max-width: 70vw !important;
+}
+
+.drac-checkbox+label, .drac-radio+label {
+    display: inline;
+    margin-left: 10px;
+}

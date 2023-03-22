@@ -1,0 +1,7 @@
+.vscode/*
+node_modules/*
+build/*
+dist/*
+dist-server/*
+.env
+stats.json

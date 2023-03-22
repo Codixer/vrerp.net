@@ -1,0 +1,20 @@
+UWU what's this?
+Availability tracker for lewdies :)  basically, who's down for lewding _right now_.
+
+How does it work?
+* The site keeps track of your bio, status, and lists other lewdies who are online right now; you can set yourself on/off anytime
+* A discord bot automatically sets your availability based on guild status (whether you're online on discord), and pings you whenever you get a request
+Simple.
+
+Can I invite my friends?
+Only if they're cool, have VR, and don't bring drama. You can create an invite code inside the app, or invite them to our discord to get one:  https://discord.gg/HDZQP6Wb6f
+
+So, what's the status?
+We're building :) and super open to chat about anything erp-related
+
+
+
+https://imgur.com/RBfcoBt
+
+
+https://discordjs.guide/popular-topics/faq.html#how-do-i-control-which-users-and-or-roles-are-mentioned-in-a-message

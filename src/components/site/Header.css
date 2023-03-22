@@ -1,0 +1,12 @@
+.topright {
+    float: right;
+}
+
+.logoAvatar {
+    display:inline;
+}
+
+.title {
+    padding-left: 20px;
+    text-decoration: none;
+}

@@ -1,0 +1,204 @@
+.error {
+    color: brown;
+}
+
+.access {
+    display: inline;
+}
+
+.adminaccess {
+    display: inline;
+    border: 1px solid brown;
+}
+
+.inlineaccess {
+    display: inline;
+    margin-left: 10px;
+}
+
+.dynamiclink {
+    text-decoration: underline;
+    cursor: pointer;
+    display: inline;
+}
+
+.mb2 { margin-bottom: 10px; }
+.mb4 { margin-bottom: 20px; }
+.ml1 { margin-left: 5px; }
+.ml2 { margin-left: 10px; }
+.ml4 { margin-left: 20px; }
+
+.fs1 { font-size: 14px; }
+.fs2 { font-size: 18px; }
+.fs4 { font-size: 28px; }
+
+.inputarea {
+    width: 80%;
+    height: 20vh;
+    color: #d5ccff;
+}
+
+.float-right {
+    float: right;
+}
+
+.medium-size {
+    width: 180px;
+}
+
+.large-size {
+    width: 360px;
+}
+
+.w180 { width: 180px; }
+.w240 { width: 240px; }
+.w360 { width: 360px; }
+.w480 { width: 480px; }
+
+.modal-consent {
+    background-color: #1D1E26; /* Black w/ opacity */
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.modal-show {
+    display: block !important;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-height: 80vh;
+
+    background-color: #282A36;
+    align-items: center;
+    max-width: 630px;
+    margin: 0 auto;
+    padding: 10px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    z-index: 2;
+}
+
+@keyframes pulse-bg {
+    0% {
+      background-color: #ddd;
+    }
+    50% {
+      background-color: #d0d0d0e0;
+    }
+    100% {
+        background-color: #ddd;
+    }
+}
+
+/* original from https://codepen.io/oslego/pen/XdvWmd */
+.skeleton-main {
+    margin: auto;
+    width: 500px;
+    height: 600px; /* change height to see repeat-y behavior */
+
+    background-image:
+        radial-gradient( circle 50px at 50px 50px, #d3d3d380 99%, transparent 0 ),
+        linear-gradient( 100deg, #282A3600,#282A3680 50%, #282A3600 80% ),
+        linear-gradient( #d3d3d380 20px, transparent 0 ),
+        linear-gradient( #d3d3d380 20px, transparent 0 ),
+        linear-gradient( #d3d3d380 20px, transparent 0 ),
+        linear-gradient( #d3d3d380 20px, transparent 0 );
+
+    background-repeat: repeat-y;
+
+    background-size:
+        100px 200px, /* circle */
+        50px 200px, /* highlight */
+        150px 200px,
+        350px 200px,
+        300px 200px,
+        250px 200px;
+
+    background-position:
+        0 0, /* circle */
+        0 0, /* highlight */
+        120px 0,
+        120px 40px,
+        120px 80px,
+        120px 120px;
+
+    animation: shine 1s infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position:
+            0 0,
+            100% 0, /* move highlight to right */
+            120px 0,
+            120px 40px,
+            120px 80px,
+            120px 120px;
+    }
+}
+
+
+/* masonry css */ 
+.masonry-grid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    margin-left: -30px; /* gutter size offset */
+    width: auto;
+  }
+.masonry-grid_column {
+    padding-left: 30px; /* gutter size */
+    background-clip: padding-box;
+}
+  
+/* Style your items */
+.masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+    background: #282A36;
+    margin-bottom: 30px;
+}
+
+.masonry-item {
+    margin-bottom: 20px;
+}
+
+.masonry-image {
+    max-width: 20vw;
+}
+
+@media only screen and (max-width: 500px){
+    .masonry-image {
+        max-width: 60vw;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 800px){
+    .masonry-image {
+        max-width: 30vw;
+    }
+}
+

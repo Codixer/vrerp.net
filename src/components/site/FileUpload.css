@@ -1,0 +1,8 @@
+.fileUpload {
+    display:inline;
+    cursor: pointer;
+}
+
+.imageFrame {
+    display: inline-block;
+}

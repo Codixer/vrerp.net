@@ -1,0 +1,12 @@
+
+.combobox-text {
+    width: 400px;
+}
+
+.combobox-panel {
+    display: block;
+    max-height: 80px;
+    overflow-y: scroll;
+}
+
+/* absolute p-0 bg-white shadow-md max-h-80 overflow-scroll w-inherit */

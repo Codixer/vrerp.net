@@ -1,0 +1,35 @@
+
+.profile-view-thumbnail {
+    border: 1px solid #000;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.profile-view-thumbnail-image {
+
+}
+.profile-view-thumbnail-info {
+    width: 100%;
+}
+
+.admincontrols {
+    float:right;
+}
+
+.mainimage-thumbnail {
+    max-height: 140px;
+    max-width: 240px;
+}
+
+.mainimage {
+    /* max-width: 628px; */
+    max-width: 100%;
+}
+
+@media only screen and (max-width: 700px){
+    .profile-view-thumbnail {
+        flex-direction: column;
+    }
+}
