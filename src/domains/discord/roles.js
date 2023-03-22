@@ -37,7 +37,7 @@ export async function uploadRoles() {
     let allTags = Object.values(profileSchema).reduce((arr, section) => {
         return arr.concat(section.values ? section.values.map((item) => _.isObject(item) ? item.display : item) : []);
     }, []);
-    const kinks = (await Kink.find({ }).lean().exec()).map(k => k.name);
+    const kinks = (await Kink.find({}).lean().exec()).map(k => k.name);
     allTags = allTags.concat(kinks);
     allTags = allTags.concat(alwaysPresentTags);
     allTags = allTags.concat(otherRoles);
@@ -48,22 +48,18 @@ export async function uploadRoles() {
     const discordMissingRoles = allTags;//.filter(t => !discordExistingRoles.includes(t));
     console.log('discordMissingRoles', discordMissingRoles);
     Promise.allSettled(discordMissingRoles.map(async (tag) => {
-        const role = await discordRoles.filter((r) => r.name == tag); 
+        const role = await discordRoles.filter((r) => r.name == tag);
         if (role.size > 0) {
             console.log("found " + tag + " - " + Array.from(role)[0][1].id)
-            const rId = Array.from(role)[0][1].id; 
-            if (rId == null) {
-                console.log(`Requested role ${tag} could not be added to user.`)
-                return 0;
-            }
+            const rId = Array.from(role)[0][1].id;
             console.log(serverRoles.filter((r) => r.tag == tag).length == 0)
             if (serverRoles.filter((r) => r.tag == tag).length == 0) {
                 await DiscordRole.create({ _id: generateSnowflake(), tag, roleId: rId, guildId });
-                console.log(tag + " did not exist in database, added it to database. Under ")    
+                console.log(tag + " did not exist in database, added it to database. Under ")
             } else {
-                console.log(tag + " exists in database.")    
+                console.log(tag + " exists in database.")
             }
-            
+
             console.log(k)
         } else {
             const newrole = await clientGuild.roles.create({
@@ -75,18 +71,18 @@ export async function uploadRoles() {
             console.log("Created and bound role in database to " + tag)
         }
 
-        
+
     }));
     console.log('role sync finished');
     // console.log('role', role);
 }
 
-let roleCache = { };
+let roleCache = {};
 
 async function rereadRoleCache() {
     const roles = await DiscordRole.find({ guildId }).lean().exec();
     console.log(roles)
-    roleCache = roles.reduce((arr, item) => { arr[item.tag] = item.roleId; return arr; }, { });
+    roleCache = roles.reduce((arr, item) => { arr[item.tag] = item.roleId; return arr; }, {});
     const guild = await Guild.findOne({ discordId: guildId }).lean().exec();
     if (guild) {
         roleCache['Verified 18+'] = guild.verifiedRoleId;
@@ -94,7 +90,7 @@ async function rereadRoleCache() {
 }
 
 export async function flushRoleCache() {
-    roleCache = { };
+    roleCache = {};
 }
 
 async function deleteServerRoles() {
@@ -113,20 +109,20 @@ export async function syncMemberRoles(userId) {
     await rereadRoleCache();
     const user = await User.findOne({ _id: userId }).lean().exec();
     if (!user) {
-        console.error(`Unknown user while syncMemberRoles: ${ userId }`);
+        console.error(`Unknown user while syncMemberRoles: ${userId}`);
         return false;
     }
     if (!user.discordId) {
         return false;
     }
     const profile = await Profile.findOne({ _id: user.profileId }).lean().exec();
-    const verification = await Verification.findOne({ $or: [{ userId }, { discordId: user.discordId  } ]}).lean().exec();
+    const verification = await Verification.findOne({ $or: [{ userId }, { discordId: user.discordId }] }).lean().exec();
     const verified = ((user.roles.includes('verified')) && !user.roles.includes('banned')) || (verification && verification.status === 'verified');
-    console.log(`updating member ${ profile.discord } (${ user.discordId }) on discord (${ verified ? 'verified' : 'non-verified' }): `);
+    console.log(`updating member ${profile.discord} (${user.discordId}) on discord (${verified ? 'verified' : 'non-verified'}): `);
     const clientGuild = client.guilds.cache.get(guildId);
     const member = clientGuild.members.cache.get(user.discordId.toString());
     if (!member) {
-        console.log(`member ${ profile.discord } not on discord`);
+        console.log(`member ${profile.discord} not on discord`);
         return false;
     }
     let allProfileTags = [];
@@ -145,8 +141,22 @@ export async function syncMemberRoles(userId) {
     const extraTagsToRemove = existingTags.filter(t => !(allProfileTags.includes(t) || allowedExtraTags.includes(t)));
     console.log('missingTags', missingTags);
     console.log('extraTagsToRemove', extraTagsToRemove);
-    await Promise.all(missingTags.map((t) => member.roles.add(roleCache[t].toString())));
-    await Promise.all(extraTagsToRemove.map((t) => member.roles.remove(roleCache[t].toString())));
+    await Promise.all(missingTags.map((t) => {
+        console.log(`Info: ${t}`)
+        if (roleCache[t] == null) {
+            console.log(`Requested role ${t.toString()} could not be added to user.`)
+            return;
+        }
+        member.roles.add(roleCache[t].toString())
+    }));
+    await Promise.all(extraTagsToRemove.map((t) => {
+        console.log(`Info: ${t}`)
+        if (roleCache[t] == null) {
+            console.log(`Requested role ${t.toString()} could not be added to user.`)
+            return;
+        }
+        member.roles.remove(roleCache[t].toString());
+    }));
     console.log('fin');
 }
 
@@ -172,7 +182,7 @@ async function syncMemberStatus() {
         if (!member.user || !member.user.id) {
             return;
         }
-        const discord = `${ member.user.username }#${ member.user.discriminator }`;
+        const discord = `${member.user.username}#${member.user.discriminator}`;
         console.log(discord);
         await updateUserStatus({ discordId: member.user.id }, { discordStatus: member.presence.status, discord }, { $addToSet: { guilds: guildId } });
     })));
@@ -181,9 +191,9 @@ async function syncMemberStatus() {
 
 async function syncMember(str) {
     const filter = new RegExp(str, 'i');
-    const profiles = await Profile.find({ $or: [{ _id: str }, { username: filter },{ discord: filter }, { vrchat: filter }, { url: filter }] }).select(['userId', 'username']).sort({ updatedAt: -1 }).lean().exec();
+    const profiles = await Profile.find({ $or: [{ _id: str }, { username: filter }, { discord: filter }, { vrchat: filter }, { url: filter }] }).select(['userId', 'username']).sort({ updatedAt: -1 }).lean().exec();
     await profiles.map(async (p) => {
-        console.log(`syncing member ${ p.username }`);
+        console.log(`syncing member ${p.username}`);
         await syncMemberRoles(p.userId);
     });
 }
