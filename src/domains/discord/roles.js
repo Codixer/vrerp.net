@@ -27,7 +27,7 @@ const alwaysPresentTags = [
     '--- COLORS ---'
 ];
 const remarkedTag = '--- Remarked For ---';
-const otherRoles = [remarkedTag, 'Event Team', '--- STAFF ---'];
+const otherRoles = [remarkedTag, 'Event Team'];
 
 export async function uploadRoles() {
     const clientGuild = client.guilds.cache.get(guildId);
@@ -131,7 +131,10 @@ export async function syncMemberRoles(userId) {
         allProfileTags.push('Verified 18+');
         allProfileTags = allProfileTags.concat(alwaysPresentTags);
     }
-    const allowedExtraTags = ['@everyone', 'servants', 'early access', 'Server Booster', 'Advisor', 'Event Host', 'Moderator', 'Staff Team', 'Verifier', 'Admin'];
+    const allowedExtraTags = ['@everyone', 'servants', 'early access', 'Server Booster', 
+    'Advisor', 'Event Host', 'Moderator', 'Staff Team', 'Verifier', 'Admin', 'Head Staff',
+    '--- STAFF ---', 'Trial Mod', 'Moderation Team', 'Event Manager', 'Event Organiser', 
+    'Webmestre', 'Technical Team'];
     if ((profile.compliments) && (Object.keys(profile.compliments).length > 0)) {
         allProfileTags.push(remarkedTag);
         allProfileTags = allProfileTags.concat(Object.keys(profile.compliments).filter(key => profile.compliments[key].length > 0));
@@ -152,12 +155,12 @@ export async function syncMemberRoles(userId) {
     await Promise.all(extraTagsToRemove.map((t) => {
         console.log(`Info: ${t}`)
         if (roleCache[t] == null) {
-            console.log(`Requested role ${t.toString()} could not be added to user.`)
+            console.log(`Requested role ${t.toString()} could not be removed from the user.`)
             return;
         }
         member.roles.remove(roleCache[t].toString());
     }));
-    console.log('fin');
+    console.log('Added all roles');
 }
 
 async function syncAllMemberRoles() {
