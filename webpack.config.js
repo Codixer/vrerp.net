@@ -12,7 +12,8 @@ export default (env, argv) => {
     mode: 'production',
     output: {
         path: path.join(__dirname, "dist"),
-        filename: "client.js"
+        filename: "client.js",
+        publicPath: 'static/'
     },
     plugins: [new MiniCssExtractPlugin({
         filename: "[name].css",
