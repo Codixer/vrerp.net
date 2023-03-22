@@ -52,6 +52,10 @@ export async function uploadRoles() {
         if (role.size > 0) {
             console.log("found " + tag + " - " + Array.from(role)[0][1].id)
             const rId = Array.from(role)[0][1].id; 
+            if (rId == null) {
+                console.log(`Requested role ${tag} could not be added to user.`)
+                return 0;
+            }
             console.log(serverRoles.filter((r) => r.tag == tag).length == 0)
             if (serverRoles.filter((r) => r.tag == tag).length == 0) {
                 await DiscordRole.create({ _id: generateSnowflake(), tag, roleId: rId, guildId });
