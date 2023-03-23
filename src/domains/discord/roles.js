@@ -15,9 +15,10 @@ import { DiscordRole, Guild } from "./discord.storage.js";
 
 const guildId = process.env.MAIN_DISCORD_ID;
 const alwaysPresentTags = [
-  "--- Gender ---",
-  "--- Sexuality ---",
-  "-- Pronouns --",
+  "--------- Colors ---------",
+  "--------- Gender ---------",,
+  "--------- Sexuality ---------",
+  "--------- Pronouns ---------",
   "-- Location --",
   "-- VR Setup --",
   "-- MISC --",
@@ -183,7 +184,7 @@ export async function syncMemberRoles(userId) {
     "Verifier",
     "Admin",
     "Head Staff",
-    "--- STAFF ---",
+    "--------- Staff ---------",
     "Trial Mod",
     "Moderation Team",
     "Event Manager",
@@ -258,7 +259,7 @@ export async function syncMemberRoles(userId) {
 
   console.log("rolesAdd", rolesAdd)
   console.log("rolesRemove", rolesRemove)
-  
+
   await member.roles.add(rolesAdd);
   await member.roles.remove(rolesRemove);
   console.log("Added all roles");
