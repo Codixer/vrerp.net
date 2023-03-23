@@ -170,7 +170,7 @@ export const profileSchema = {
   },
   discordpings: {
     description: "Receive Discord notifications for:",
-    values: ["Event Ping", "Updates Ping", "Active Cuties"],
+    values: ["Event Ping", "Updates Ping"],
   },
 };
 
