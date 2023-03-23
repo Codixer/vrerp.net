@@ -29,7 +29,7 @@ const ProfileEditBasic = ({ id, url }) => {
             <ProfileAvatar id={ id } edit={ true } />
             <br />
             <li>Your profile pic will be the first thing peeps see -try to make it a good one!</li> 
-            <li>Use your main ERP avatar, see <a href='/kitten' target='_blank'>Kitten&apos;s bio for example here</a> 😸</li>
+            <li>Use your main ERP avatar, see <a href='/Codixer' target='_blank'>Codixer&apos;s bio for example here</a> 😸</li>
             <li>Pics: use lewds, not nudes! Lewds (pics without explicit bits) are much more enticing, and makes other peeps want to know more 😊</li><br />
             <br />
             <b>Info:</b>

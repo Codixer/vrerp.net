@@ -86,7 +86,7 @@ export const LandingPage = () => {
                     Find new VR lewdies, and make your sexual fantasies come true in virtual reality 😊<br /><br />
                 </Text>
                 <Text>
-                    Kitten loves playing with strangers, so we&apos;re building a community where we can be horny together 😊<br /><br />
+                    The admins love playing with strangers, so we&apos;re building a community where we can be horny together 😊<br /><br />
                     Our community is centered around social VR (where all the lewding happens), this site dedicated to erp matchmaking,
                     and a discord for flirting, meeting new lewdies💕, events, and more!<br />
                     <br /><br />
@@ -94,7 +94,7 @@ export const LandingPage = () => {
                     <li>a super active &amp; lewd community 💕</li>
                     <li>dedicated matchmaking (for finding new lewdies 😊)</li>
                     <li>lobby (for finding peeps available right now)</li>
-                    <li><Link href='/kitten'>build your own detailed erp profile</Link> you can share with others on discord</li>
+                    <li><Link href='/codixer'>build your own detailed erp profile</Link> you can share with others on discord</li>
                     <li><Link href='/guides'>guides</Link> for <Link href='/VRC-Kama-Sutra-or-kittens-guide-to-cuddles'>leveling up your erp skills</Link></li>
                     <li><Link href='/vrchat-avatar-assets'>ERP avatars</Link>, and <Link href='/vrchat-accessory-assets'>accessories</Link></li>
                     and more 😊<br />
@@ -112,7 +112,7 @@ export const LandingPage = () => {
                 </a>
             </center>
             💕love,<br />
-            -Kitten
+            - The lewd admins
         </div>
     )
 };

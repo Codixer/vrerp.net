@@ -196,7 +196,7 @@ client.on('guildMemberAdd', async (member) => {
 • Most of our channels are behind age verification -this is to make sure everyone here is comfy to play with 😊 
 To join the server, and verify your account, please register on the site using your discord: https://vrerp.net/
 Have lotsa fun 💕💕💕
--Kitten`);
+-The lewd admins`);
 });
 
 client.on('guildMemberRemove', async (member) => {

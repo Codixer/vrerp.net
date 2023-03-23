@@ -90,7 +90,7 @@ export const Verification = ({ id, onFinished, header = false }) => {
                         <li>Or ask a verified member to vouch for you, and give you an invite link</li>
                         <br />
                         Thanks! 💕<br />
-                        -Kitten<br />
+                        -The lewd admins<br />
                         <center><Button onclick={ submit } disabled={ !migrate && !uploadedImage } >Verify</Button></center>
                         <br /><br />
                     </div>

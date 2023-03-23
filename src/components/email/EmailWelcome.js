@@ -13,6 +13,6 @@ export const EmailWelcome = ({ server, code }) => (
         <li><a href='https://discord.gg/HDZQP6Wb6f'>Join us on discord!</a> For meeting other peeps, and more 😊</li>
         <br />
         💕 love,<br />
-        kitten<br />
+        Your lewd admins<br />
     </EmailFrame>
 );
