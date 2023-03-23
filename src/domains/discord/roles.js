@@ -233,8 +233,6 @@ export async function syncMemberRoles(userId) {
       rolesAdd.push(ro)
     })
   );
-  member.roles.add(rolesAdd);
-
   await Promise.all(
     extraTagsToRemove.map((t) => {
       console.log(`Info: ${t}`);
@@ -257,7 +255,12 @@ export async function syncMemberRoles(userId) {
       rolesRemove.push(ro)
     })
   );
-  member.roles.remove(rolesRemove);
+
+  console.log("rolesAdd", rolesAdd)
+  console.log("rolesRemove", rolesRemove)
+  
+  await member.roles.add(rolesAdd);
+  await member.roles.remove(rolesRemove);
   console.log("Added all roles");
 }
 
