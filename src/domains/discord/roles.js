@@ -230,7 +230,7 @@ export async function syncMemberRoles(userId) {
         return;
       }
 
-      addRoles.push(ro)
+      rolesAdd.push(ro)
     })
   );
   member.roles.add(rolesAdd);
