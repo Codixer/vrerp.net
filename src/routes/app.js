@@ -177,7 +177,7 @@ const getLayout = async (req, res) => {
   if (head.title.toString().indexOf("Page not found") !== -1) {
     res.status(404);
   }
-  if (head.title.toString().indexOf("Sign up to view this page") !== -1) {
+  if (head.title.toString().indexOf("Sign in/up to view this page") !== -1) {
     res.status(403);
   }
 

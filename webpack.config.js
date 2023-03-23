@@ -13,7 +13,7 @@ export default (env, argv) => {
     output: {
       path: path.join(__dirname, "dist"),
       filename: "client.js",
-      //        publicPath: '/static/'
+      //publicPath: '/static/'
     },
     plugins: [new MiniCssExtractPlugin({
       filename: "[name].css",

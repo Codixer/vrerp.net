@@ -209,30 +209,55 @@ export async function syncMemberRoles(userId) {
   );
   console.log("missingTags", missingTags);
   console.log("extraTagsToRemove", extraTagsToRemove);
+  let rolesAdd = []
+  let rolesRemove = []
   await Promise.all(
     missingTags.map((t) => {
       console.log(`Info: ${t}`);
+
       if (roleCache[t] == null) {
         console.log(
           `Requested role ${t.toString()} could not be added to user.`
         );
         return;
       }
-      member.roles.add(roleCache[t].toString());
-    })
-  );
-  await Promise.all(
-    extraTagsToRemove.map((t) => {
-      console.log(`Info: ${t}`);
-      if (roleCache[t] == null) {
+
+      ro = clientGuild.roles.cache.get(roleCache[t].toString());
+      if (ro == null) {
         console.log(
-          `Requested role ${t.toString()} could not be removed from the user.`
+          `Requested role ${t.toString()} could not found on the server (what).`
         );
         return;
       }
-      member.roles.remove(roleCache[t].toString());
+
+      addRoles.push(ro)
     })
   );
+  member.roles.add(rolesAdd);
+
+  await Promise.all(
+    extraTagsToRemove.map((t) => {
+      console.log(`Info: ${t}`);
+
+      if (roleCache[t] == null) {
+        console.log(
+          `Requested role ${t.toString()} could not be removed to user.`
+        );
+        return;
+      }
+
+      ro = clientGuild.roles.cache.get(roleCache[t].toString());
+      if (ro == null) {
+        console.log(
+          `Requested role ${t.toString()} could not found on the server (what).`
+        );
+        return;
+      }
+
+      rolesRemove.push(ro)
+    })
+  );
+  member.roles.remove(rolesRemove);
   console.log("Added all roles");
 }
 

@@ -30,6 +30,10 @@ a {
     margin-bottom: 5vh;
 }
 
+.app::staff {
+    outline: 1px solid gold;
+}
+
 .emoji {
     width: 32px;
 }
