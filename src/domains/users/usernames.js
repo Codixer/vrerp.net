@@ -1,44 +1,192 @@
-
 import { Profile } from "./users.storage.js";
 
 export const reservedUsernames = [
-    'about', 'account', 'activate', 'add', 'admin', 'administrator', 'api', 'app', 'apps', 'archive', 'archives', 'auth', 
-    'blog', 'cache', 'cancel', 'careers', 'cart', 'changelog', 'checkout', 'codereview', 'compare', 'config', 'configuration', 'connect',
-    'contact', 'create', 'delete', 'direct_messages', 'documentation', 'download', 'downloads', 'edit', 'email', 'employment',
-    'enterprise', 'faq', 'favorites', 'feed', 'feedback', 'feeds', 'fleet', 'fleets', 'follow', 'followers', 'following', 'friend',
-    'friends', 'gist', 'group', 'groups', 'help', 'home', 'hosting', 'hostmaster', 'idea', 'ideas', 'index', 'info', 'invitations',
-    'invite', 'is', 'it', 'job', 'jobs', 'json', 'language', 'languages', 'lists', 'login', 'logout', 'logs', 'mail', 'map', 'maps',
-    'mine', 'mis', 'news', 'oauth', 'oauth_clients', 'offers', 'openid', 'order', 'orders', 'organizations', 'plans', 'popular', 
-    'post', 'postmaster', 'privacy', 'projects', 'put', 'recruitment', 'register', 'remove', 'replies', 'root', 'rss', 'sales', 
-    'save', 'search', 'security', 'sessions', 'settings', 'shop', 'signup', 'sitemap', 'ssl', 'ssladmin', 'ssladministrator',
-    'sslwebmaster', 'status', 'stories', 'styleguide', 'subscribe', 'subscriptions', 'support', 'sysadmin', 'sysadministrator',
-    'terms', 'tour', 'translations', 'trends', 'unfollow', 'unsubscribe', 'update', 'url', 'user', 'weather', 'webmaster',
-    'widget', 'widgets', 'wiki', 'ww', 'www', 'wwww', 'xfn', 'xml', 'xmpp', 'yaml', 'yml',
-    'event', 'events', 'vr', 'vrerp', 'guides', 'matches', 'match', 'browse', 'invite', 'invites', 'profile', 'profiles', 'about', 
-    'fantasies', 'fantasy', 'fresh-souls', 'lobby', 'report', 'thanks', 'thank', 'mod'
+  "about",
+  "account",
+  "activate",
+  "add",
+  "admin",
+  "administrator",
+  "api",
+  "app",
+  "apps",
+  "archive",
+  "archives",
+  "auth",
+  "blog",
+  "cache",
+  "cancel",
+  "careers",
+  "cart",
+  "changelog",
+  "checkout",
+  "codereview",
+  "compare",
+  "config",
+  "configuration",
+  "connect",
+  "contact",
+  "create",
+  "delete",
+  "direct_messages",
+  "documentation",
+  "download",
+  "downloads",
+  "edit",
+  "email",
+  "employment",
+  "enterprise",
+  "faq",
+  "favorites",
+  "feed",
+  "feedback",
+  "feeds",
+  "fleet",
+  "fleets",
+  "follow",
+  "followers",
+  "following",
+  "friend",
+  "friends",
+  "gist",
+  "group",
+  "groups",
+  "help",
+  "home",
+  "hosting",
+  "hostmaster",
+  "idea",
+  "ideas",
+  "index",
+  "info",
+  "invitations",
+  "invite",
+  "is",
+  "it",
+  "job",
+  "jobs",
+  "json",
+  "language",
+  "languages",
+  "lists",
+  "login",
+  "logout",
+  "logs",
+  "mail",
+  "map",
+  "maps",
+  "mine",
+  "mis",
+  "news",
+  "oauth",
+  "oauth_clients",
+  "offers",
+  "openid",
+  "order",
+  "orders",
+  "organizations",
+  "plans",
+  "popular",
+  "post",
+  "postmaster",
+  "privacy",
+  "projects",
+  "put",
+  "recruitment",
+  "register",
+  "remove",
+  "replies",
+  "root",
+  "rss",
+  "sales",
+  "save",
+  "search",
+  "security",
+  "sessions",
+  "settings",
+  "shop",
+  "signup",
+  "sitemap",
+  "ssl",
+  "ssladmin",
+  "ssladministrator",
+  "sslwebmaster",
+  "status",
+  "stories",
+  "styleguide",
+  "subscribe",
+  "subscriptions",
+  "support",
+  "sysadmin",
+  "sysadministrator",
+  "terms",
+  "tour",
+  "translations",
+  "trends",
+  "unfollow",
+  "unsubscribe",
+  "update",
+  "url",
+  "user",
+  "weather",
+  "webmaster",
+  "widget",
+  "widgets",
+  "wiki",
+  "ww",
+  "www",
+  "wwww",
+  "xfn",
+  "xml",
+  "xmpp",
+  "yaml",
+  "yml",
+  "event",
+  "events",
+  "vr",
+  "vrerp",
+  "guides",
+  "matches",
+  "match",
+  "browse",
+  "invite",
+  "invites",
+  "profile",
+  "profiles",
+  "about",
+  "fantasies",
+  "fantasy",
+  "fresh-souls",
+  "lobby",
+  "report",
+  "thanks",
+  "thank",
+  "mod",
 ];
 
 export const usernameToURL = (username) => {
-    return username.toLowerCase();
-}
+  return username.toLowerCase();
+};
 
-export const validateUsername = async(username, currentProfileId) => {
-    const url = usernameToURL(username);
-    if (url === '') {
-        return 'please set a username';
-    }
-    if (url.endsWith('-assets')) {
-        return 'preserved username';
-    }
-    if (url.match(/[ \\/#!?]/g)) {
-        return 'no special characters';
-    }
-    if (reservedUsernames.includes(url)) {
-        return `username already taken`;
-    }
-    const p = await Profile.find({ url }).lean().exec();
-    if (p.length > 0) {
-        return (p[0]._id.toString() === currentProfileId) ? null : `username already taken`;
-    }
-    return null;
+export const validateUsername = async (username, currentProfileId) => {
+  const url = usernameToURL(username);
+  if (url === "") {
+    return "please set a username";
+  }
+  if (url.endsWith("-assets")) {
+    return "preserved username";
+  }
+  if (url.match(/[ \\/#!?]/g)) {
+    return "no special characters";
+  }
+  if (reservedUsernames.includes(url)) {
+    return `username already taken`;
+  }
+  const p = await Profile.find({ url }).lean().exec();
+  if (p.length > 0) {
+    return p[0]._id.toString() === currentProfileId
+      ? null
+      : `username already taken`;
+  }
+  return null;
 };

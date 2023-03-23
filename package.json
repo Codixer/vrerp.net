@@ -9,7 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm run server\" \"npm run webpack\"",
     "start": "node dist-server/server.js",
-    "profile": "webpack --mode=production --profile --json >stats.json"
+    "profile": "webpack --mode=production --profile --json >stats.json",
+    "pretty": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json}\""
   },
   "author": "",
   "license": "ISC",
@@ -86,6 +87,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-react": "^7.27.1",
-    "eslint-plugin-react-hooks": "^4.3.0"
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "^2.8.6"
   }
 }

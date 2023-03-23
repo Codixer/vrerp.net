@@ -1,5 +1,5 @@
 import { default as nodeExternals } from 'webpack-node-externals';
-import { default as MiniCssExtractPlugin} from 'mini-css-extract-plugin';
+import { default as MiniCssExtractPlugin } from 'mini-css-extract-plugin';
 import path from 'path';
 
 const __dirname = process.platform === 'win32' ?
@@ -11,46 +11,46 @@ export default (env, argv) => {
     entry: ["regenerator-runtime/runtime.js", "./src/client.js"],
     mode: 'production',
     output: {
-        path: path.join(__dirname, "dist"),
-        filename: "client.js",
-//        publicPath: '/static/'
+      path: path.join(__dirname, "dist"),
+      filename: "client.js",
+      //        publicPath: '/static/'
     },
     plugins: [new MiniCssExtractPlugin({
-        filename: "[name].css",
+      filename: "[name].css",
     })],
 
     devtool: (argv.mode === 'production') ? undefined : 'source-map',
     module: {
-        rules: [
+      rules: [
+        {
+          test: /\.js$/i,
+          loader: "babel-loader",
+        },
+        {
+          test: /\.css$/,
+          use: [
+            MiniCssExtractPlugin.loader,
             {
-                test: /\.js$/i,
-                loader: "babel-loader",
+              loader: "css-loader",
+              options: {
+                importLoaders: 1,
+                modules: false,
+                url: true,
+                sourceMap: true,
+              },
             },
-            {
-              test: /\.css$/,
-              use: [
-                MiniCssExtractPlugin.loader,
-                {
-                  loader: "css-loader",
-                  options: {
-                    importLoaders: 1,
-                    modules: false,
-                    url: true,
-                    sourceMap: true,
-                  },
-                },
-              ],
-            },
-        ]
+          ],
+        },
+      ]
     },
     "resolve": {
-        "alias": {
-            "react": "preact/compat",
-            "react-dom": "preact/compat"
-        }
+      "alias": {
+        "react": "preact/compat",
+        "react-dom": "preact/compat"
+      }
     }
-},
-{
+  },
+  {
     target: 'node14.16',
     mode: 'development',
     externals: [nodeExternals({
@@ -63,44 +63,44 @@ export default (env, argv) => {
     plugins: [new MiniCssExtractPlugin({ runtime: false })],
     entry: ["regenerator-runtime/runtime.js", "./src/server.js"],
     output: {
-        path: path.join(__dirname, "dist-server"),
-        filename: "server.js",
-        libraryTarget: 'commonjs2'
+      path: path.join(__dirname, "dist-server"),
+      filename: "server.js",
+      libraryTarget: 'commonjs2'
     },
     devtool: 'source-map',
     module: {
-        rules: [
+      rules: [
+        {
+          test: /\.js$/i,
+          loader: "babel-loader",
+          exclude: /node_modules/,
+        },
+        {
+          test: /\.css$/,
+          use: [
+            MiniCssExtractPlugin.loader,
             {
-                test: /\.js$/i,
-                loader: "babel-loader",
-                exclude: /node_modules/,
+              loader: "css-loader",
+              options: {
+                importLoaders: 1,
+                modules: false,
+                url: true,
+                sourceMap: true,
+              },
             },
-            {
-              test: /\.css$/,
-              use: [
-                MiniCssExtractPlugin.loader,
-                {
-                  loader: "css-loader",
-                  options: {
-                    importLoaders: 1,
-                    modules: false,
-                    url: true,
-                    sourceMap: true,
-                  },
-                },
-              ],
-            },
-            {
-              test: /\.node$/,
-              loader: "node-loader",
-            }
-        ]
+          ],
+        },
+        {
+          test: /\.node$/,
+          loader: "node-loader",
+        }
+      ]
     },
     "resolve": {
-        "alias": {
-            "react": "preact/compat",
-            "react-dom": "preact/compat",
-        }
+      "alias": {
+        "react": "preact/compat",
+        "react-dom": "preact/compat",
+      }
     }
   }
   ];
