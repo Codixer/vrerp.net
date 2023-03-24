@@ -254,12 +254,6 @@ const AdminAssets = () => {
   );
 };
 
-const AdminBreak = () => {
-  const { profileStore } = useStores();
-  console.log(profileStore.asd.dsa);
-  return <div>test break</div>;
-};
-
 const Admin = ({ section, id }) => (
   <div>
     <Helmet title={`admin - vrerp.net`} />
@@ -301,18 +295,12 @@ const Admin = ({ section, id }) => (
         <li>
           <Link href="/moderator/mood">mood tracker</Link>
         </li>
-        <br />
-        <br />
-        <li>
-          <Link href="/admin/break">break</Link>
-        </li>
       </div>
     )}
     {section === "tags" && !id && <AdminTagsEdit />}
     {section === "matches" && <AdminMatchList />}
     {section === "guides" && <AdminGuides />}
     {section === "assets" && <AdminAssets />}
-    {section === "break" && <AdminBreak />}
   </div>
 );
 
