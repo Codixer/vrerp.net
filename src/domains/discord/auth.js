@@ -50,7 +50,7 @@ async function joinDiscordServer(discordProfile) {
     const d = await axios({
       url: `https://discord.com/api/v10/guilds/${process.env.MAIN_DISCORD_ID}/members/${discordProfile.id}`,
       method: "PUT",
-      access_token: discordProfile.accessCode,
+      data: { access_token: discordProfile.accessCode.replace("Bearer ", "") },
       headers: { 
         "Content-Type": "application/json",
         "Authorization": `Bot ${process.env.DISCORD_BOT_TOKEN}`
