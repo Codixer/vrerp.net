@@ -52,7 +52,7 @@ async function joinDiscordServer(discordProfile) {
       method: "PUT",
       access_token: discordProfile.accessCode,
       headers: { 
-        "content-type": "application/x-www-form-urlencoded",
+        "content-type": "application/json",
         "authentication": `Bot ${process.env.DISCORD_BOT_TOKEN}`
       },
     });
