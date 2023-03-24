@@ -44,31 +44,29 @@ async function getAccessToken(code, api) {
   }
 }
 
+// Create a function to join a discord server provided by process.env.MAIN_DISCORD_ID. Pull the user ID from discordProfile.id and the access token from discordProfile.accessCode. If the return value is 201 or 204, return true. If is it anything else, return false.
 async function joinDiscordServer(discordProfile) {
-  console.log(`User is attempting to join the Discord Server with access code ${discordProfile.accessCode}`);
-  const join = await axios({
-    url: `https://discord.com/api/v10/guilds/${process.env.MAIN_DISCORD_ID}/members/${discordProfile.id}`,
-    method: "PUT",
-    headers: {
-      authorization: `Bot ${process.env.DISCORD_BOT_TOKEN}`,
-      "Content-Type": "application/json",
-    },  
-    data: {
-      access_token: discordProfile.accessCode,
-    },
-  });
+  const data = {
+    access_token: discordProfile.accessCode,
+  };
 
-  // Check if the axios request returns 201 Created or 204 No Content
-  if (join.status !== 201 && join.status !== 204) {
-    console.log("Failed to join Discord Server");
+  try {
+    const d = await axios({
+      url: `https://discord.com/api/v10/guilds/${process.env.MAIN_DISCORD_ID}/members/${discordProfile.id}`,
+      method: "PUT",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      data: qs.stringify(data),
+    });
+    if (d.status === 201 || d.status === 204) {
+      console.log("Joined discord server (Or already joined).");
+      return true;
+    }
+    return false;
+  } catch (e) {
+    console.error(e);
     return false;
   }
-
-  // If join.status is 201, log that the user was added. If join.status is 204, log that the user was already in the server.
-  join.status === 201 ? console.log("User was added to the Discord Server") : console.log("User was already in the Discord Server");
-  return true;
 }
-
 
 async function getDiscordProfile(req, api) {
   const code = req.query.code;
