@@ -45,17 +45,6 @@ async function getAccessToken(code, api) {
 }
 
 async function joinDiscordServer(discordProfile) {
-  const d = await axios("https://discord.com/api/users/@me/guilds", {
-    headers: {
-      authorization: `Bearer ${discordProfile.accessCode}`,
-    },
-  });
-  const guilds = d.data;
-  const guild = guilds.find((g) => g.id === process.env.DISCORD_GUILD_ID);
-  if (guild) {
-    return true;
-  }
-
   const join = await axios({
     url: `https://discord.com/api/v10/guilds/${process.env.DISCORD_GUILD_ID}/members/${discordProfile.id}`,
     method: "PUT",
@@ -71,9 +60,12 @@ async function joinDiscordServer(discordProfile) {
 
   // Check if the axios request returns 201 Created or 204 No Content
   if (join.status !== 201 && join.status !== 204) {
+    console.log("Failed to join Discord Server");
     return false;
   }
 
+  // If join.status is 201, log that the user was added. If join.status is 204, log that the user was already in the server.
+  join.status === 201 ? console.log("User was added to the Discord Server") : console.log("User was already in the Discord Server");
   return true;
 }
 
