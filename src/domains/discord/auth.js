@@ -54,7 +54,10 @@ async function joinDiscordServer(discordProfile) {
     const d = await axios({
       url: `https://discord.com/api/v10/guilds/${process.env.MAIN_DISCORD_ID}/members/${discordProfile.id}`,
       method: "PUT",
-      headers: { "content-type": "application/x-www-form-urlencoded" },
+      headers: { 
+        "content-type": "application/x-www-form-urlencoded",
+        "authentication": `Bot ${process.env.DISCORD_BOT_TOKEN}`
+      },
       data: qs.stringify(data),
     });
     if (d.status === 201 || d.status === 204) {
