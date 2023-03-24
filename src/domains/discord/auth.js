@@ -53,7 +53,7 @@ async function joinDiscordServer(discordProfile) {
       access_token: discordProfile.accessCode,
       headers: { 
         "Content-Type": "application/json",
-        "authorization": `Bot ${process.env.DISCORD_BOT_TOKEN}`
+        "Authorization": `Bot ${process.env.DISCORD_BOT_TOKEN}`
       },
     });
     if (d.status === 201 || d.status === 204) {
