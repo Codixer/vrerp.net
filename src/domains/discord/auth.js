@@ -117,10 +117,6 @@ router.get("/api/discord/link", async (req, res, next) => {
   }
 
   console.log("Connecting user to discord server.");
-  let joined = joinDiscordServer(discordProfile);
-
-  joined ? console.log("User joined the discord server.") : console.log("User was not able to join the discord server.");
-
   const loginUser = await User.findOne({ _id: req.session.userId })
     .lean()
     .exec();
