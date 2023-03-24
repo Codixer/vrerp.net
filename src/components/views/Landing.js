@@ -183,7 +183,7 @@ export const LandingPage = () => {
       <Heading size="md" p="sm">
         Join our discord server to chat
       </Heading>
-      <center>
+      {/* <center>
         <a
           href={"https://discord.gg/HDZQP6Wb6f"}
           target="_blank"
@@ -195,7 +195,7 @@ export const LandingPage = () => {
             className="landing-login-btn"
           />
         </a>
-      </center>
+      </center> */}
       💕love,
       <br />- The lewd admins
     </div>
