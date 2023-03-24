@@ -46,19 +46,15 @@ async function getAccessToken(code, api) {
 
 // Create a function to join a discord server provided by process.env.MAIN_DISCORD_ID. Pull the user ID from discordProfile.id and the access token from discordProfile.accessCode. If the return value is 201 or 204, return true. If is it anything else, return false.
 async function joinDiscordServer(discordProfile) {
-  const data = {
-    access_token: discordProfile.accessCode,
-  };
-
   try {
     const d = await axios({
       url: `https://discord.com/api/v10/guilds/${process.env.MAIN_DISCORD_ID}/members/${discordProfile.id}`,
       method: "PUT",
+      access_token: discordProfile.accessCode,
       headers: { 
         "content-type": "application/x-www-form-urlencoded",
         "authentication": `Bot ${process.env.DISCORD_BOT_TOKEN}`
       },
-      data: qs.stringify(data),
     });
     if (d.status === 201 || d.status === 204) {
       console.log("Joined discord server (Or already joined).");
