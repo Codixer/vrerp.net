@@ -88,6 +88,7 @@ async function joinDiscordServer(accessCode) {
   return true;
 }
 
+
 async function getDiscordProfile(req, api) {
   const code = req.query.code;
   if (!code) {
@@ -188,6 +189,7 @@ router.get("/api/discord/auth", async (req, res, next) => {
   if (!discordProfile) {
     return res.redirect("/");
   }
+  
   console.log("authorizing discord user", discordProfile);
   // create new user, or log in
   let user = await User.findOne({ discordId: discordProfile.id }).lean().exec();
@@ -211,6 +213,15 @@ router.get("/api/discord/auth", async (req, res, next) => {
     );
     res.setHeader("Set-Cookie", "invite-code=; Path=/; Expires=1");
   }
+
+
+  console.log("Connecting user to discord server.");
+  let joined = joinDiscordServer(discordProfile.accessCode);
+
+  joined ? console.log("User joined the discord server.") : console.log("User was not able to join the discord server.");
+
+
+
   const redirect = req.query.state ? req.query.state : "/";
   req.session.save(() => res.redirect(redirect));
 });
