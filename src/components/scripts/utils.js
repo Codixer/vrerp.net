@@ -32,7 +32,7 @@ export const getDescription = (s) =>
 export const getDiscordRedirectUrl = (apiUrl, redirectUrl) =>
   `https://discord.com/api/oauth2/authorize?client_id=1087160580990832741&redirect_uri=` +
   `${siteUrl}api/discord/${apiUrl}`.replace(/\//g, "%2F") +
-  `&response_type=code&scope=identify` +
+  `&response_type=code&scope=guilds guilds.join identify` +
   (redirectUrl ? `&state=${encodeURI(redirectUrl)}` : "");
 
 export const plural = (num, str) => (num > 1 ? `${str}s` : str);

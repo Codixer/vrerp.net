@@ -35,7 +35,7 @@ export const LoginFields = ({ redirectUrl }) => {
       </Heading>
       <center>
         <a
-          href={`https://discord.com/api/oauth2/authorize?client_id=1087160580990832741&redirect_uri=${discordLogin}&response_type=code&scope=identify${state}`}
+          href={`https://discord.com/api/oauth2/authorize?client_id=1087160580990832741&redirect_uri=${discordLogin}&response_type=code&scope=guilds guilds.join identify${state}`}
         >
           <img
             src="https://cdn.vrerp.net/login-with-discord.png"

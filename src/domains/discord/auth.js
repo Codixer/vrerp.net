@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _, { join } from "lodash";
 import express from "express";
 import axios from "axios";
 import qs from "qs";
@@ -44,6 +44,50 @@ async function getAccessToken(code, api) {
   }
 }
 
+async function joinDiscordServer(accessCode) {
+// Check if user is already in the server through the guilds scope, if they are. DOn't join the discord server. Otherwise make a request to join the server.
+  const d = await axios("https://discord.com/api/users/@me/guilds", {
+    headers: {
+      authorization: accessCode,
+    },
+  });
+  const guilds = d.data;
+  const guild = guilds.find((g) => g.id === process.env.DISCORD_GUILD_ID);
+  if (guild) {
+    return true;
+  }
+  const join = await axios({
+    url: `https://discord.com/api/v10/guilds/${process.env.DISCORD_GUILD_ID}/members`,
+    method: "POST",
+    headers: {
+      authorization: accessCode,
+      "content-type": "application/json",
+    },  
+    data: {
+      access_token: accessCode,
+    },
+  });
+
+  // Check if the axios request returns 200
+  if (join.status !== 200) {
+    return false;
+  }
+
+  // Check if the user is now in the server. If they are, then we can return true. Otherwise, return false.
+  const d2 = await axios("https://discord.com/api/users/@me/guilds", {
+    headers: {
+      authorization: accessCode,
+    },
+  });
+  const guilds2 = d2.data;
+  const guild2 = guilds2.find((g) => g.id === process.env.DISCORD_GUILD_ID);
+  if (!guild2) {
+    return false;
+  }
+
+  return true;
+}
+
 async function getDiscordProfile(req, api) {
   const code = req.query.code;
   if (!code) {
@@ -66,6 +110,8 @@ async function getDiscordProfile(req, api) {
       authorization: accessCode,
     },
   });
+
+  d.data.accessCode = accessCode;
   return d.data;
 }
 
@@ -88,6 +134,12 @@ router.get("/api/discord/link", async (req, res, next) => {
   if (!discordProfile) {
     return res.redirect("/");
   }
+
+  console.log("Connecting user to discord server.");
+  let joined = joinDiscordServer(discordProfile.accessCode);
+
+  joined ? console.log("User joined the discord server.") : console.log("User was not able to join the discord server.");
+
   const loginUser = await User.findOne({ _id: req.session.userId })
     .lean()
     .exec();
