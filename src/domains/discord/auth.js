@@ -47,7 +47,7 @@ async function getAccessToken(code, api) {
 async function joinDiscordServer(discordProfile) {
   const d = await axios("https://discord.com/api/users/@me/guilds", {
     headers: {
-      authorization: discordProfile.accessCode,
+      authorization: `Bearer ${discordProfile.accessCode}`,
     },
   });
   const guilds = d.data;
