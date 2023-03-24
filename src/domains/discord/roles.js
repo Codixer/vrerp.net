@@ -223,7 +223,7 @@ export async function syncMemberRoles(userId) {
         return;
       }
 
-      let ro = clientGuild.roles.cache.get(roleCache[t].toString());
+      let ro = clientGuild.roles.cache[roleCache[t].toString()];
       if (ro == null) {
         console.log(
           `Requested role ${t.toString()} could not found on the server (what).`
@@ -245,7 +245,7 @@ export async function syncMemberRoles(userId) {
         return;
       }
 
-      let ro = clientGuild.roles.cache.get(roleCache[t].toString());
+      let ro = clientGuild.roles.cache[roleCache[t].toString()];
       if (ro == null) {
         console.log(
           `Requested role ${t.toString()} could not found on the server (what).`

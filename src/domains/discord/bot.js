@@ -180,8 +180,7 @@ async function submittedVerification(userId, parameters) {
     .exec();
   //console.log("admins", admins);
 
-  // send message to the log channel in the main vrerp discord
-  await sendMessage(
+  discordLog(
     process.env.MAIN_LOGS_CHANNEL,
     `<@&1087523024187707493> New ID verification submitted: ${
       process.env.SERVER_URL
