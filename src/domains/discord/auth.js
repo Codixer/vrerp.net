@@ -49,12 +49,11 @@ async function joinDiscordServer(discordProfile) {
     url: `https://discord.com/api/v10/guilds/${process.env.MAIN_DISCORD_ID}/members/${discordProfile.id}`,
     method: "PUT",
     headers: {
-      authorization: `Bearer ${discordProfile.accessCode}`,
+      authorization: `Bearer ${process.env.DISCORD_BOT_TOKEN}`,
       "Content-Type": "application/json",
     },  
     data: {
       access_token: discordProfile.accessCode,
-      nick: discordProfile.nick, // optional
     },
   });
 
