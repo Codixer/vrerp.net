@@ -52,8 +52,8 @@ async function joinDiscordServer(discordProfile) {
       method: "PUT",
       access_token: discordProfile.accessCode,
       headers: { 
-        "content-type": "application/json",
-        "authentication": `Bot ${process.env.DISCORD_BOT_TOKEN}`
+        "Content-Type": "application/json",
+        "authorization": `Bot ${process.env.DISCORD_BOT_TOKEN}`
       },
     });
     if (d.status === 201 || d.status === 204) {
