@@ -78,7 +78,7 @@ router.post("/api/reports", async (req, res, next) => {
   }
   await Report.create(reportData);
   discordLog(
-    `New report made for \`${
+    `<@&1088201944604094529> New report made for \`${
       reportData.accusedUsername == null
         ? `No username selected`
         : reportData.accusedUsername.toString()

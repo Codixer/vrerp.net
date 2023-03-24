@@ -171,24 +171,33 @@ async function suspendedMember(userId, parameters) {
 
 async function submittedVerification(userId, parameters) {
   const { discordId } = parameters;
-  const admins = await User.find({ roles: { $in: ["mod", "admin"] } })
-    .lean()
-    .exec();
+  // const admins = await User.find({ roles: { $in: ["mod", "admin"] } })
+  //   .lean()
+  //   .exec();
   const verification = await Verification.findOne({ discordId })
     .sort({ updatedAt: -1 })
     .lean()
     .exec();
-  console.log("admins", admins);
-  await Promise.all(
-    admins.map((user) =>
-      sendMessage(
-        user.discordId,
-        `New ID verification submitted: ${
-          process.env.SERVER_URL
-        }moderator/verification    ${verification ? verification.discord : ""}`
-      )
-    )
+  //console.log("admins", admins);
+
+  // send message to the log channel in the main vrerp discord
+  await sendMessage(
+    process.env.MAIN_LOGS_CHANNEL,
+    `<@&1087523024187707493> New ID verification submitted: ${
+      process.env.SERVER_URL
+    }moderator/verification    ${verification ? verification.discord : ""}`
   );
+
+  // await Promise.all(
+  //   admins.map((user) =>
+  //     sendMessage(
+  //       user.discordId,
+  //       `New ID verification submitted: ${
+  //         process.env.SERVER_URL
+  //       }moderator/verification    ${verification ? verification.discord : ""}`
+  //     )
+  //   )
+  // );
 }
 
 client.once("ready", async () => {

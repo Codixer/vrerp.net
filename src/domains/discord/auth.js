@@ -50,10 +50,10 @@ async function joinDiscordServer(discordProfile) {
     const d = await axios({
       url: `https://discord.com/api/v10/guilds/${process.env.MAIN_DISCORD_ID}/members/${discordProfile.id}`,
       method: "PUT",
-      data: {access_token: discordProfile.accessCode},
+      access_token: discordProfile.accessCode,
       headers: { 
-        "content-type": "application/json",
-        "authorization": `Bot ${process.env.DISCORD_BOT_TOKEN}`
+        "Content-Type": "application/json",
+        "Authorization": `Bot ${process.env.DISCORD_BOT_TOKEN}`
       },
     });
     if (d.status === 201 || d.status === 204) {
@@ -114,7 +114,6 @@ router.get("/api/discord/link", async (req, res, next) => {
     return res.redirect("/");
   }
 
-  console.log("Connecting user to discord server.");
   const loginUser = await User.findOne({ _id: req.session.userId })
     .lean()
     .exec();
@@ -190,12 +189,9 @@ router.get("/api/discord/auth", async (req, res, next) => {
 
 
   console.log("Connecting user to discord server.");
-  let joined = joinDiscordServer(discordProfile);
-
+  let joined = await joinDiscordServer(discordProfile);
   joined ? console.log("User joined the discord server.") : console.log("User was not able to join the discord server.");
-
-
-
+  
   const redirect = req.query.state ? req.query.state : "/";
   req.session.save(() => res.redirect(redirect));
 });
