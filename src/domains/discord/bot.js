@@ -181,7 +181,6 @@ async function submittedVerification(userId, parameters) {
   //console.log("admins", admins);
 
   discordLog(
-    process.env.MAIN_LOGS_CHANNEL,
     `<@&1087523024187707493> New ID verification submitted: ${
       process.env.SERVER_URL
     }moderator/verification    ${verification ? verification.discord : ""}`
