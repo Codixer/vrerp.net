@@ -99,7 +99,7 @@ export const LandingPics = () => {
   return (
     <center className="landing-image-container">
       <img
-        src="https://cdn.vrerp.net/frontpage/pic-1-ori-thm.png"
+        src="https://cdn.vrerp.net/frontpage/pic-1-alaenoor.png"
         className="landing-image"
       />
       <img
