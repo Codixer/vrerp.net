@@ -18,15 +18,15 @@ async function importVerifications() {
   client.once("ready", async () => {
     console.log("discord bot ready");
     const hasVerified = [];
-    const guildId = "988364778781155358";
+    const guildId = "1087158851322773525";
     const clientGuild = client.guilds.cache.get(guildId);
     const members = await clientGuild.members.fetch();
     members.each((member, key) => {
       console.log(
         member.user.username,
-        member.roles.cache.get("1000644439133405244")
+        member.roles.cache.get("1087158851956125699")
       );
-      if (member.roles.cache.get("1000644439133405244")) {
+      if (member.roles.cache.get("1087158851956125699")) {
         hasVerified.push({
           _id: generateSnowflake(),
           discordId: member.user.id,

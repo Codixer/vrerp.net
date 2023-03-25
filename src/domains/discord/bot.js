@@ -70,7 +70,7 @@ async function refreshMembers() {
   // console.log('user', user);
   // user.send('hi-hi! ');
 
-  const guild = await client.guilds.fetch("988364778781155358");
+  const guild = await client.guilds.fetch("1087158851322773525");
   console.log("guild", guild);
   console.log("mem:");
   const members = await guild.members.fetch({ withPresences: true });
@@ -134,7 +134,7 @@ async function approveVerification(userId, parameters) {
   }
   msg += `. Welcome! 💕`;
   // explicitely enable main vrerp discord
-  const enableDiscords = verification.requestedBy.concat("988364778781155358");
+  const enableDiscords = verification.requestedBy.concat("1087158851322773525");
   await Promise.allSettled(
     enableDiscords.map(async (d) => {
       const guild = await Guild.findOne({ discordId: d }).lean().exec();

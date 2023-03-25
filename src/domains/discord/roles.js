@@ -1,6 +1,6 @@
 // syncs roles between site, and discord server
 
-import { SystemChannelFlags } from "discord.js";
+import { GuildMember, SystemChannelFlags } from "discord.js";
 import _ from "lodash";
 import pLimit from "p-limit";
 import { connect } from "../../helpers/connect.js";
@@ -251,23 +251,26 @@ export async function syncMemberRoles(userId) {
 }
 
 async function syncAllMemberRoles() {
-  const clientGuild = client.guilds.cache.get(guildId);
-  const members = clientGuild.members.cache
-    .map((m) => (m.user && m.user.id ? m.user.id : null))
-    .filter((id) => id);
+  let mem = 0;
+  const clientGuild = await client.guilds.fetch(guildId);
+  const premembers = await clientGuild.members.fetch();
+  const members = premembers.map((m) => (m.user && m.user.id ? m.user.id : null))
+  .filter((id) => id); 
   const limit = pLimit(5);
   await Promise.all(
     members.map((discordId) =>
       limit(async () => {
         const user = await User.findOne({ discordId }).lean().exec();
         if (!user) {
+          console.error(`Unknown user while syncMemberRoles: ${discordId}`);
+          mem++;
           return false;
         }
         await syncMemberRoles(user._id);
       })
     )
   );
-  console.log(members);
+  console.log(mem);
 }
 
 async function syncMemberStatus() {
@@ -316,6 +319,51 @@ async function syncMember(str) {
   });
 }
 
+async function unverifiedRole() {
+  // Go through all discord members in the main guild and check if they have the 'Verified 18+' role. If they don't, give them the 'Unverified' role.
+  const clientGuild = await client.guilds.fetch(process.env.MAIN_DISCORD_ID);
+  const members = await clientGuild.members.fetch();
+  const verifiedRole = clientGuild.roles.cache.find(l => l.name === "Verified 18+");
+  const unverifiedRole = clientGuild.roles.cache.find(l => l.name === "UNVERIFIED");
+  let count = 0;
+  let count2 = 0;
+  let count3 = 0;
+  let count4 = 0;
+
+
+
+  for (const [key, member] of members) {
+    // Check if the member is a bot
+    if (member.user.bot) continue;
+
+    //console.log(member.displayName + " has roles: " + member.roles.cache.size);
+
+    if (member.roles.cache.has(verifiedRole.id) && member.roles.cache.has(unverifiedRole.id)) {
+      //await member.roles.remove(unverifiedRole);
+      //console.log("Removed unverified role from " + member.displayName);
+      count4++;
+    }
+
+    if (!member.roles.cache.has(verifiedRole.id)) {
+      //await member.roles.add(unverifiedRole);
+      //console.log("Added no 18+ role to " + member.displayName);
+      count2++;
+    }
+
+    if (member.roles.cache.size === 1) {
+      //await member.roles.add(unverifiedRole);
+      //console.log("Added no roles role to " + member.displayName);
+      count3++;
+    }
+
+    count++;
+  }
+  console.log("Total members: " + count);
+  console.log("Total members with no 18+ role: " + count2);
+  console.log("Total members with no roles: " + count3);
+  console.log("Total members with both roles: " + count4);
+}
+
 if (isMainEntry(import.meta.url)) {
   (async () => {
     await connect();
@@ -339,6 +387,8 @@ if (isMainEntry(import.meta.url)) {
         await syncMemberStatus();
       } else if (process.argv[2] === "member") {
         await syncMember(process.argv[3]);
+      } else if (process.argv[2] === "unverified") {
+        await unverifiedRole(process.argv[2]);
       }
     });
   })();
