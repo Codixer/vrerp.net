@@ -28,9 +28,9 @@ const About = () => (
     </Heading>
     <div className="drac-p-sm">
       <Text>
-        vrerp.net is founded, and ran by (people), you can contact her via
+        vrerp.net is founded, and ran by (people), you can contact him via
         Codixer#2936 on Discord, or{" "}
-        <a href="mailto:vrerp@protonmail.com">vrerp@protonmail.com</a>.
+        <a href="mailto:contact@vrerp.net">contact@vrerp.net</a>.
       </Text>
     </div>
   </div>
