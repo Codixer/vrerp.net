@@ -25,7 +25,6 @@ const alwaysPresentTags = [
   "-- ERP Status --",
   "-- BDSM --",
   "-- Kinks --",
-  "--- COLORS ---",
 ];
 const remarkedTag = "--- Remarked For ---";
 const otherRoles = [remarkedTag];
