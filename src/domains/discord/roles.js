@@ -216,14 +216,7 @@ export async function syncMemberRoles(userId) {
     missingTags.map((t) => {
       console.log(`Info: ${t}`);
 
-      if (roleCache[t] == null) {
-        console.log(
-          `Requested role ${t.toString()} could not be added to user.`
-        );
-        return;
-      }
-
-      let ro = clientGuild.roles.get(roleCache[t].toString());
+      let ro = clientGuild.roles.get(t.toString());
       if (ro == null) {
         console.log(
           `Requested role ${t.toString()} could not found on the server (what).`
@@ -238,14 +231,7 @@ export async function syncMemberRoles(userId) {
     extraTagsToRemove.map((t) => {
       console.log(`Info: ${t}`);
 
-      if (roleCache[t] == null) {
-        console.log(
-          `Requested role ${t.toString()} could not be removed to user.`
-        );
-        return;
-      }
-
-      let ro = clientGuild.roles.get(roleCache[t].toString());
+      let ro = clientGuild.roles.get(t.toString());
       if (ro == null) {
         console.log(
           `Requested role ${t.toString()} could not found on the server (what).`
