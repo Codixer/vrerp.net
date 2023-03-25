@@ -270,7 +270,7 @@ async function syncAllMemberRoles() {
       })
     )
   );
-  console.log(mem);
+  console.log(members);
 }
 
 async function syncMemberStatus() {

@@ -103,15 +103,15 @@ export const LandingPics = () => {
         className="landing-image"
       />
       <img
-        src="https://cdn.vrerp.net/frontpage/pic-1-ori-thm.png"
+        src="https://cdn.vrerp.net/frontpage/pic-1-succy.png"
         className="landing-image"
       />
       <img
-        src="https://cdn.vrerp.net/frontpage/pic-1-ori-thm.png"
+        src="https://cdn.vrerp.net/frontpage/pic-2-comfiecake.png"
         className="landing-image"
       />
       <img
-        src="https://cdn.vrerp.net/frontpage/pic-1-ori-thm.png"
+        src="https://cdn.vrerp.net/frontpage/pic-3-hoodie.png"
         className="landing-image"
       />
     </center>
