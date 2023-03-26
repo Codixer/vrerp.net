@@ -53,10 +53,18 @@ const AssetItem = ({ id }) => {
   if (!asset) {
     return <div className="masonry-item"></div>;
   }
+
+  const affiliateLink = (url) => {
+    if (url.match(/.gumroad.com/)) {
+        return `${ url }?a=573336883`;   /// your affiliate number here
+    }
+    return url;
+};
+
   return (
     <div className="masonry-item">
       <a
-        href={asset.url}
+        href={affiliateLink(asset.url)}
         target="_blank"
         rel="noreferrer"
         onClick={triggerClick}
