@@ -138,6 +138,7 @@ router.post("/api/assets/:id", async (req, res) => {
 });
 
 router.post("/api/assets/:id/refresh", async (req, res) => {
+  console.log("refreshing", req.params.id);
   await refreshExternalAsset(req.params.id);
   res.send({ status: "ok", data: await getAssets(req, [req.params.id]) });
 });
