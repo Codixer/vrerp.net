@@ -80,7 +80,7 @@ export const MainMenu = () => {
          
         </div>
       )}
-      <MenuLink href="https://www.patreon.com/vrerp">💰 Support us!</MenuLink>
+      <MenuLink className="sidemenu-support" href="https://www.patreon.com/vrerp">💰 Support us!</MenuLink>
       {hasRole(user, "admin") && (
         <div className="sidemenu-admin">
           <MenuLink href="/admin">🔔 Admin</MenuLink>
