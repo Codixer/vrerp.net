@@ -27,6 +27,8 @@
 .sidemenu-support {
     display: block;
     color: #ffe100;
+    text-decoration: none;
+    margin: 10px;
     font-weight: bold;
 }
 
