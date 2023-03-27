@@ -26,6 +26,7 @@ async function scrapeMetaInfo(url) {
 }
 
 export async function refreshExternalAsset(id) {
+  console.log(id)
   const asset = await Asset.findOne({ _id: id }).lean().exec();
   console.log(asset); 
   const [meta, $] = await scrapeMetaInfo(asset.url);
@@ -79,7 +80,7 @@ export async function refreshExternalAsset(id) {
       _id: generateSnowflake(),
       category: "assetimage",
       parentId: id,
-      filename: "image",
+      filename: "image.jpg",
       extension: "jpg",
     });
     console.log("image", image);
