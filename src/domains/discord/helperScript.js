@@ -18,7 +18,7 @@ async function importVerifications() {
   client.once("ready", async () => {
     console.log("discord bot ready");
     const hasVerified = [];
-    const guildId = "1087158851322773525";
+    const guildId = process.env.MAIN_DISCORD_ID;
     const clientGuild = client.guilds.cache.get(guildId);
     const members = await clientGuild.members.fetch();
     members.each((member, key) => {
