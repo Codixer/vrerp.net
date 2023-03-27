@@ -87,7 +87,7 @@ export const MainMenu = () => {
         </div>
       )}
       <div className="sidemenu-support">
-        <SupportLink href="https://www.patreon.com/vrerp">💰 Support us!</MenuLink>
+        <SupportLink href="https://www.patreon.com/vrerp">💰 Support us!</SupportLink>
       </div>
 
       {hasRole(user, "admin") && (
