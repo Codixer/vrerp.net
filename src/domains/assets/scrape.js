@@ -73,7 +73,7 @@ export async function refreshExternalAsset(id) {
     }
   }
   console.log("update", update);
-  if (asset.originalImageUrl !== update.originalImageUrl) {
+  //if (asset.originalImageUrl !== update.originalImageUrl) {
     await deleteFiles([asset.image]);
     console.log("image saving", update.originalImageUrl);
     const image = await saveFile(update.originalImageUrl, {
@@ -86,7 +86,7 @@ export async function refreshExternalAsset(id) {
     console.log("image", image);
     await createThumbnails(image._id, ["thumbnail"]);
     update.image = image._id;
-  }
+  //}
   const res = await Asset.findOneAndUpdate({ _id: id }, update, { new: true });
   return res;
 }
