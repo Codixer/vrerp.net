@@ -15,7 +15,7 @@ export const MenuLink = ({ href, children }) => (
 );
 
 export const SupportLink = ({ href, children }) => (
-  <div className="sidemenu-support" key={`menu${href}`}>
+  <div className="sidemenu-item support" key={`menu${href}`}>
     <Link href={href}>{children}</Link>
   </div>
 );
@@ -86,7 +86,7 @@ export const MainMenu = () => {
 
         </div>
       )}
-      <div className="sidemenu-support">
+      <div className="sidemenu-admin">
         <SupportLink href="https://www.patreon.com/vrerp">💰 Support us!</SupportLink>
       </div>
 

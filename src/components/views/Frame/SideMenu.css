@@ -24,15 +24,6 @@
     display: block;
 }
 
-.sidemenu-support {
-    display: block;
-    color: #ffe100;
-    text-decoration: none;
-    margin: 10px;
-    font-weight: bold;
-}
-
-
 .sidemenu-avatar {
     width:100%;
 }
@@ -47,6 +38,13 @@
 
 .sidemenu-item .nodecoration {
     text-decoration: none !important;
+}
+
+.sidemenu-item support {
+    text-decoration: none;
+    color: #ffe100;
+    text-decoration: none;
+    margin: 10px;
 }
 
 @media only screen and (max-width: 1023px){
