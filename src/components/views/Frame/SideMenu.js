@@ -15,8 +15,8 @@ export const MenuLink = ({ href, children }) => (
 );
 
 export const SupportLink = ({ href, children }) => (
-  <div className="sidemenu-item support" key={`menu${href}`}>
-    <Link href={href}>{children}</Link>
+  <div className="sidemenu-item" key={`menu${href}`}>
+    <Link style="color: #ffe100; text-decoration: none; margin: 10px;" href={href}>{children}</Link>
   </div>
 );
 
