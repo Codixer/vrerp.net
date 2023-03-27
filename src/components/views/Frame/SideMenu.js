@@ -14,6 +14,12 @@ export const MenuLink = ({ href, children }) => (
   </div>
 );
 
+export const SupportLink = ({ href, children }) => (
+  <div className="sidemenu-support" key={`menu${href}`}>
+    <Link href={href}>{children}</Link>
+  </div>
+);
+
 export const DynamicMenuLink = ({ key, children, onClick }) => (
   <div className="sidemenu-item" key={`menu${key}`}>
     <DynamicLink className="nodecoration" onClick={onClick}>
@@ -81,7 +87,7 @@ export const MainMenu = () => {
         </div>
       )}
       <div className="sidemenu-support">
-        <MenuLink className="" href="https://www.patreon.com/vrerp">💰 Support us!</MenuLink>
+        <SupportLink href="https://www.patreon.com/vrerp">💰 Support us!</MenuLink>
       </div>
 
       {hasRole(user, "admin") && (
