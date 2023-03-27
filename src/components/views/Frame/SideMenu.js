@@ -77,9 +77,10 @@ export const MainMenu = () => {
           {roles && roles.includes("events") && (
             <MenuLink href="/events">📅 Events</MenuLink>
           )}
-          <MenuLink href="https://www.patreon.com/vrerp">💰 Support us!</MenuLink>
+         
         </div>
       )}
+      <MenuLink href="https://www.patreon.com/vrerp">💰 Support us!</MenuLink>
       {hasRole(user, "admin") && (
         <div className="sidemenu-admin">
           <MenuLink href="/admin">🔔 Admin</MenuLink>
