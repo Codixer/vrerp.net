@@ -89,6 +89,7 @@ const Home = () => {
           <br />
           Due to the safety of our website and community, inviting members has been removed from the website.
           <br />
+          <br />
           <NextAction />
           <br />
           {messages && messages.length > 0 && (
