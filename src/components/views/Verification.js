@@ -134,20 +134,16 @@ export const Verification = ({ id, onFinished, header = false }) => {
             <br />
             <br />
             <li>
-              If you already have a 18+ ID verification in another server with
+              For the safety of our community, we&apos;re not allowing any migrations from the old server, or any outside servers as of this moment. If you want to verify, you will have to follow the above steps.
+              {/* If you already have a 18+ ID verification in another server with
               this discord account, skip the above, and type the server&apos;s
               name here:
               <InputBox
                 name="migrateVerfication"
                 onChange={(evt) => setMigrate(evt.target.value)}
-              />
+              /> */}
             </li>
             <br />
-            <br />
-            <li>
-              Or ask a verified member to vouch for you, and give you an invite
-              link
-            </li>
             <br />
             Thanks! 💕
             <br />

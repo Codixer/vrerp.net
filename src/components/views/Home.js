@@ -87,7 +87,7 @@ const Home = () => {
           <Link href="/fantasies">browse fantasies</Link> to find your vibe
           <br />
           <br />
-          Due to the safety of our website and community, inviting members has been removed from the website.
+          Due to the safety of our website and community, inviting members has been removed as a feature from the website. We apoligise for any inconvenience this may cause.
           <br />
           <br />
           <NextAction />
