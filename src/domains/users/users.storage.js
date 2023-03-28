@@ -110,7 +110,6 @@ export const User = mongoose.model(
       suspendUntil: Date,
       adminMessage: String,
       loginCodes: [String],
-      inviteCode: String,
       inviterId: Long,
     },
     {

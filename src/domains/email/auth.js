@@ -17,7 +17,6 @@ import {
   EmailVerificationDenied,
 } from "../../components/email/EmailNotifications.js";
 import { getProfileList } from "../users/profiles.js";
-import { applyInviteCode } from "../invites/siteInvites.js";
 
 export const router = express.Router();
 
@@ -61,11 +60,6 @@ router.post("/api/users", async (req, res) => {
   );
   const body = render(emailData, {}, {});
   await sendEmail(email, "Welcome to vrerp.net! 💕", body);
-  if (req.cookies["invite-code"]) {
-    console.log("applying invite code", req.cookies["invite-code"]);
-    await applyInviteCode(user._id, null, null, req.cookies["invite-code"]);
-    res.setHeader("Set-Cookie", "invite-code=; Path=/; Expires=1");
-  }
   res.send({ ok: "ok" });
 });
 
@@ -91,7 +85,6 @@ router.get("/api/users/auth", async (req, res) => {
     "roles",
     "discordId",
     "adminMessage",
-    "inviteCode",
     "email",
   ]);
   Events.emit(EventTypes.LOGIN, user._id);

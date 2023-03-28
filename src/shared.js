@@ -16,7 +16,6 @@ export const siteStore = new Store({
     roles: null,
     id: null,
     profileId: null,
-    inviteCode: null,
     messages: [],
   },
   reported: null,

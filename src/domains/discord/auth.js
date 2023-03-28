@@ -8,7 +8,6 @@ import * as EventTypes from "../events/events.types.js";
 
 import { isMainEntry } from "../../helpers/utils.js";
 import { User, Profile } from "../users/users.storage.js";
-import { applyInviteCode } from "../invites/siteInvites.js";
 import { createUser } from "../users/users.js";
 import { testingDiscordProfile } from "../testing/fixtures.js";
 import { updateUserStatus } from "../status/status.js";
@@ -175,16 +174,6 @@ router.get("/api/discord/auth", async (req, res, next) => {
     await User.findOneAndUpdate({ _id: user._id }, { discord });
     req.session.userId = user._id;
     Events.emit(EventTypes.LOGIN, user._id);
-  }
-  if (req.cookies["invite-code"]) {
-    console.log("applying invite code", req.cookies["invite-code"]);
-    await applyInviteCode(
-      user._id,
-      user.discordId,
-      discord,
-      req.cookies["invite-code"]
-    );
-    res.setHeader("Set-Cookie", "invite-code=; Path=/; Expires=1");
   }
 
 

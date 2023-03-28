@@ -230,31 +230,6 @@ router.get("/favicon.ico", async (req, res) => {
   res.status(404).send({ error: "not found" });
 });
 
-router.get("/invite/:code", async (req, res, next) => {
-  const user = await User.findOne({ inviteCode: req.params.code })
-    .lean()
-    .exec();
-  if (!user || !fullAccess(user)) {
-    return next();
-  }
-  const profileData = await getProfileList(req, [user.profileId], ["profile"]);
-  let expireDate = new Date();
-  expireDate.setMonth(expireDate.getMonth() + 1);
-  res.setHeader(
-    "Set-Cookie",
-    `invite-code=${
-      req.params.code
-    }; Expires=${expireDate.toUTCString()}; Path=/`
-  );
-  mergeData(
-    req,
-    "profileStore",
-    JSON.parse(JSON.stringify({ ...profileData }))
-  );
-  mergeData(req, "siteStore", { view: { inviterId: user.profileId } });
-  next();
-});
-
 router.get("/media/:id", async (req, res, next) => {
   const { files } = await getMediaList({
     _id: req.params.id,

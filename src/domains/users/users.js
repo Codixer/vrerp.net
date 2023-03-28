@@ -15,7 +15,6 @@ import {
 import { Profile, User } from "./users.storage.js";
 import { deleteProfileFromMatches } from "../matching/matching.js";
 import { deleteProfile } from "./profiles.js";
-import { generateInviteCode } from "../invites/siteInvites.js";
 import { usernameToURL, validateUsername } from "./usernames.js";
 import {
   deleteUserStatus,
@@ -65,7 +64,6 @@ async function basicData(req, res, next) {
       "roles",
       "discordId",
       "adminMessage",
-      "inviteCode",
       "email",
     ]);
     req.user.id = req.user._id;
@@ -272,11 +270,6 @@ export const hydrateUser = async (req) => {
   let data = { isHuman: req.session.isHuman, ageCheck: !!req.session.ageCheck };
   if (req.user) {
     data = { ...data, ..._.omit(req.user, "_id"), id: req.user._id };
-    if (fullAccess(req.user) && !req.user.inviteCode) {
-      data.inviteCode = req.user.inviteCode = await generateInviteCode(
-        req.user._id
-      );
-    }
     data = {
       ...data,
       ...(await getUserStatus({ userId: req.user._id })),

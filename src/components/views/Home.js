@@ -87,15 +87,7 @@ const Home = () => {
           <Link href="/fantasies">browse fantasies</Link> to find your vibe
           <br />
           <br />
-          Invite your lewdies by sending them this link:
-          <br />
-          (Invite only peeps you know are over 18+)
-          <br />
-          <InputBox
-            value={`${siteUrl}invite/${user.inviteCode}`}
-            className="w360"
-            readonly="1"
-          />
+          Due to the safety of our website and community, inviting members has been removed from the website.
           <br />
           <NextAction />
           <br />
