@@ -58,6 +58,10 @@ const AssetItem = ({ id }) => {
     if (url.match(/.gumroad.com/)) {
         return `${ url }?a=573336883`;   /// your affiliate number here
     }
+
+    if (url.match(/.payhip.com/)) {
+      return `${ url }?fp_ref=stefano87`;   /// your affiliate number here
+  }
     return url;
 };
 

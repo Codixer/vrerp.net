@@ -13,9 +13,9 @@ AWS.config.update({
   secretAccessKey: process.env.secretAccessKey,
 });
 
-export const Bucket = "cdn.vrerp.net";
+export const Bucket = process.env.S3_BUCKET;
 const s3 = new AWS.S3({
-  endpoint: "s3-gateway.vrerp.net",
+  endpoint: process.env.S3_ENDPOINT,
 });
 export const fileRouter = express.Router();
 
