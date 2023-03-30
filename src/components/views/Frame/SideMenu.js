@@ -20,6 +20,12 @@ export const SupportLink = ({ href, children }) => (
   </div>
 );
 
+export const LovenseLink = ({ href, children }) => (
+  <div className="sidemenu-item" key={`menu${href}`}>
+    <Link style="color: #d70072; text-decoration: none; margin: 10px;" href={href}>{children}</Link>
+  </div>
+);
+
 export const DynamicMenuLink = ({ key, children, onClick }) => (
   <div className="sidemenu-item" key={`menu${key}`}>
     <DynamicLink className="nodecoration" onClick={onClick}>
@@ -83,9 +89,14 @@ export const MainMenu = () => {
           {roles && roles.includes("events") && (
             <MenuLink href="/events">📅 Events</MenuLink>
           )}
+          <div className="sidemenu-admin">
+            <LovenseLink href="https://www.lovense.com/r/ocnexm">💕 Buy Lovense</LovenseLink>
+          </div>
 
         </div>
-      )}
+      )} {
+        // #d70072
+      }
       <div className="sidemenu-admin">
         <SupportLink href="https://www.patreon.com/vrerp">💰 Support us!</SupportLink>
       </div>
