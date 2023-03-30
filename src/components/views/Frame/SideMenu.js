@@ -89,9 +89,6 @@ export const MainMenu = () => {
           {roles && roles.includes("events") && (
             <MenuLink href="/events">📅 Events</MenuLink>
           )}
-          <div className="sidemenu-admin">
-            <LovenseLink href="https://www.lovense.com/r/ocnexm">💕 Buy Lovense</LovenseLink>
-          </div>
 
         </div>
       )} {
@@ -99,6 +96,7 @@ export const MainMenu = () => {
       }
       <div className="sidemenu-admin">
         <SupportLink href="https://www.patreon.com/vrerp">💰 Support us!</SupportLink>
+        <LovenseLink href="https://www.lovense.com/r/ocnexm">💕 Buy Lovense</LovenseLink>
       </div>
 
       {hasRole(user, "admin") && (
