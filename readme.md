@@ -4,6 +4,7 @@ Setup instructions:
 
 For local development:
 * Create a local .env file with content:
+```env
 MONGO=mongodb://admin:admin@127.0.0.1:27019/vrerp?authSource=admin&directConnection=true
 MODE=development
 DYNO=local.dev
@@ -20,6 +21,7 @@ TELEGRAPH_TOKEN=xxxxxxx
 MAIN_DISCORD_ID=xxxxxxx
 MAIN_LOGS_CHANNEL=xxxxxxx
 WORKERID=0
+```
 
 MAIN_DISCORD_ID  <- should be the ID of the discord server
 MAIN_LOGS_CHANNEL <- should be the ID of the logs channel, visible for admins only -this will contain reports / etc
