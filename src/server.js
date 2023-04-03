@@ -76,8 +76,7 @@ app.use((req, res, next) => {
   req.sid = uuid.v4();
   clsSession.run(() => {
     clsSession.set("req", req);
-    const ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-    console.log(ip, req.method, req.url);
+    console.log(req.method, req.url);
     next();
   });
 });
