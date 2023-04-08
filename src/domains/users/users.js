@@ -41,7 +41,7 @@ export const getSessionParser = () => {
         collectionName: "sessions",
         stringify: false,
       }),
-      cookie: { maxAge: 1000 * 60 * 60 * 24 * 365 * 5 }, // 5 year timeout
+      cookie: { maxAge: 1000 * 60 * 60 * 24 * 90 }, // 90 day timeout
       resave: false,
       saveUninitialized: false,
     });
