@@ -45,7 +45,9 @@ export const LoginFields = ({ redirectUrl }) => {
         </a>
         <br />
         <Text size="sm">
-          (We use your Discord account to join our server and link you to our website, all communication happens through our server and your roles get synced. We don't do anything else with this data)
+          (We use your Discord account to join our server and link you to our
+          website, all communication happens through our server and your roles
+          get synced. We don't do anything else with this data)
         </Text>
       </center>
     </div>

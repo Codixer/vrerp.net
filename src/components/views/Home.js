@@ -68,7 +68,9 @@ const Home = () => {
   );
   return (
     <div className="drac-m-sm">
-      <h1>Welcome to vr erp! 🤗</h1>
+      <h1>
+        Welcome to <span style="color: #fa4b88">vrerp.net!</span> 🤗
+      </h1>
       <br />
       {!hasRole(user, "onboarded") && (
         <div>
@@ -87,7 +89,9 @@ const Home = () => {
           <Link href="/fantasies">browse fantasies</Link> to find your vibe
           <br />
           <br />
-          Due to the safety of our website and community, inviting members has been removed as a feature from the website. We apoligise for any inconvenience this may cause.
+          Due to the safety of our website and community, inviting members has
+          been removed as a feature from the website. We apoligise for any
+          inconvenience this may cause.
           <br />
           <br />
           <NextAction />

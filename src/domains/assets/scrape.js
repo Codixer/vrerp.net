@@ -26,9 +26,9 @@ async function scrapeMetaInfo(url) {
 }
 
 export async function refreshExternalAsset(id) {
-  console.log(id)
+  console.log(id);
   const asset = await Asset.findOne({ _id: id }).lean().exec();
-  console.log(asset); 
+  console.log(asset);
   const [meta, $] = await scrapeMetaInfo(asset.url);
   const isNumeric = (value) => /^-?\d+$/.test(value);
   console.log("meta", meta);

@@ -31,7 +31,11 @@ export async function createThumbnails(fid, thumbnails) {
   if (newSizes.length === 0) {
     return false;
   }
-  const link = `https://cdn.vrerp.net/${getBucketFilename(file, "original")}`;
+  const link = `https://${
+    process.env.MODE == "development"
+      ? `s3-gateway.vrerp.net/${Bucket}`
+      : "cdn.vrerp.net"
+  }/${getBucketFilename(file, "original")}`;
   console.log(link);
   const { data } = await download(link);
   if (newSizes.includes("thumbnail")) {

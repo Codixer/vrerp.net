@@ -8,10 +8,18 @@ import { generateSnowflake, isMainEntry } from "../../helpers/utils.js";
 import { UserFile } from "./userFiles.storage.js";
 import { getBucketFilename } from "../../shared.js";
 
-AWS.config.update({
-  accessKeyId: process.env.accessKeyId,
-  secretAccessKey: process.env.secretAccessKey,
-});
+if (process.env.MODE == "development") {
+  AWS.config.update({
+    accessKeyId: process.env.accessKeyId,
+    secretAccessKey: process.env.secretAccessKey,
+    s3ForcePathStyle: true,
+  });
+} else {
+  AWS.config.update({
+    accessKeyId: process.env.accessKeyId,
+    secretAccessKey: process.env.secretAccessKey,
+  });
+}
 
 export const Bucket = process.env.S3_BUCKET;
 const s3 = new AWS.S3({

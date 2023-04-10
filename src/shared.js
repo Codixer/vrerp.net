@@ -118,11 +118,33 @@ export const getBucketFilename = (file, size) => {
   return `${directory}/${file._id || file.id}/${fn}`;
 };
 
+/**
+ * Why are there two functions here for prod/dev? (getImageURL):
+ * Because of the way react works I cannot use 'process.env'
+ * or else it will throw errors.
+ * and break stuff on the website, as 'process' is not defined.
+ * 'process' is a NODE variable. There are ways to make process
+ * available at runtime with webpack, but there are security
+ * questions that come along with that.
+ */
+
+// -- Production:
+// Uncomment this for production
+
 export const getImageURL = (file, size) => {
   return file
     ? `https://cdn.vrerp.net/${getBucketFilename(file, size)}`
     : `https://cdn.vrerp.net/notfound.png`;
 };
+
+// - Development:
+// Uncomment this for development
+
+// export const getImageURL = (file, size) => {
+//   return file
+//     ? `https://s3-gateway.vrerp.net/dev-cdn/${getBucketFilename(file, size)}`
+//     : `https://cdn.vrerp.net/notfound.png`;
+// };
 
 export const snowflakeToDate = (snowflake) => {
   const dateBits = Number(BigInt.asUintN(64, snowflake) >> 22n);

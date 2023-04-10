@@ -206,13 +206,13 @@ export async function syncMemberRoles(userId) {
   );
   console.log("missingTags", missingTags);
   console.log("extraTagsToRemove", extraTagsToRemove);
-  let rolesAdd = []
-  let rolesRemove = []
+  let rolesAdd = [];
+  let rolesRemove = [];
   await Promise.all(
     missingTags.map((t) => {
       console.log(`Info: ${t}`);
 
-      let ro = clientGuild.roles.cache.find(r => r.name === t);
+      let ro = clientGuild.roles.cache.find((r) => r.name === t);
       if (ro == null) {
         console.log(
           `Requested role ${t.toString()} could not found on the server (what).`
@@ -220,14 +220,14 @@ export async function syncMemberRoles(userId) {
         return;
       }
 
-      rolesAdd.push(ro)
+      rolesAdd.push(ro);
     })
   );
   await Promise.all(
     extraTagsToRemove.map((t) => {
       console.log(`Info: ${t}`);
 
-      let ro = clientGuild.roles.cache.find(r => r.name === t);
+      let ro = clientGuild.roles.cache.find((r) => r.name === t);
       if (ro == null) {
         console.log(
           `Requested role ${t.toString()} could not found on the server (what).`
@@ -235,12 +235,12 @@ export async function syncMemberRoles(userId) {
         return;
       }
 
-      rolesRemove.push(ro)
+      rolesRemove.push(ro);
     })
   );
 
-  console.log("rolesAdd", rolesAdd)
-  console.log("rolesRemove", rolesRemove)
+  console.log("rolesAdd", rolesAdd);
+  console.log("rolesRemove", rolesRemove);
 
   await member.roles.add(rolesAdd);
   await member.roles.remove(rolesRemove);
@@ -251,8 +251,9 @@ async function syncAllMemberRoles() {
   let mem = 0;
   const clientGuild = await client.guilds.fetch(guildId);
   const premembers = await clientGuild.members.fetch();
-  const members = premembers.map((m) => (m.user && m.user.id ? m.user.id : null))
-  .filter((id) => id); 
+  const members = premembers
+    .map((m) => (m.user && m.user.id ? m.user.id : null))
+    .filter((id) => id);
   const limit = pLimit(5);
   await Promise.all(
     members.map((discordId) =>
@@ -320,14 +321,16 @@ async function unverifiedRole() {
   // Go through all discord members in the main guild and check if they have the 'Verified 18+' role. If they don't, give them the 'Unverified' role.
   const clientGuild = await client.guilds.fetch(process.env.MAIN_DISCORD_ID);
   const members = await clientGuild.members.fetch();
-  const verifiedRole = clientGuild.roles.cache.find(l => l.name === "Verified 18+");
-  const unverifiedRole = clientGuild.roles.cache.find(l => l.name === "UNVERIFIED");
+  const verifiedRole = clientGuild.roles.cache.find(
+    (l) => l.name === "Verified 18+"
+  );
+  const unverifiedRole = clientGuild.roles.cache.find(
+    (l) => l.name === "UNVERIFIED"
+  );
   let count = 0;
   let count2 = 0;
   let count3 = 0;
   let count4 = 0;
-
-
 
   for (const [key, member] of members) {
     // Check if the member is a bot
@@ -335,7 +338,10 @@ async function unverifiedRole() {
 
     //console.log(member.displayName + " has roles: " + member.roles.cache.size);
 
-    if (member.roles.cache.has(verifiedRole.id) && member.roles.cache.has(unverifiedRole.id)) {
+    if (
+      member.roles.cache.has(verifiedRole.id) &&
+      member.roles.cache.has(unverifiedRole.id)
+    ) {
       //await member.roles.remove(unverifiedRole);
       //console.log("Removed unverified role from " + member.displayName);
       count4++;

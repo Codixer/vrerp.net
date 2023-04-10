@@ -134,7 +134,12 @@ export const Verification = ({ id, onFinished, header = false }) => {
             <br />
             <br />
             <li>
-              For the safety of our community, <b>we&apos;re not allowing any migrations from the old server, or any outside servers as of this moment.</b> If you want to verify, you will have to follow the above steps.
+              For the safety of our community,{" "}
+              <b>
+                we&apos;re not allowing any migrations from the old server, or
+                any outside servers as of this moment.
+              </b>{" "}
+              If you want to verify, you will have to follow the above steps.
               {/* If you already have a 18+ ID verification in another server with
               this discord account, skip the above, and type the server&apos;s
               name here:
