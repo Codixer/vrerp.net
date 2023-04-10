@@ -16,13 +16,17 @@ export const MenuLink = ({ href, children }) => (
 
 export const SupportLink = ({ href, children }) => (
   <div className="sidemenu-item" key={`menu${href}`}>
-    <Link style="color: #ffe100; text-decoration: none; margin: 10px;" href={href}>{children}</Link>
+    <Link style="color: #ffe100; text-decoration: none;" href={href}>
+      {children}
+    </Link>
   </div>
 );
 
 export const LovenseLink = ({ href, children }) => (
   <div className="sidemenu-item" key={`menu${href}`}>
-    <Link style="color: #d70072; text-decoration: none; margin: 10px;" href={href}>{children}</Link>
+    <Link style="color: #d70072; text-decoration: none;" href={href}>
+      {children}
+    </Link>
   </div>
 );
 
@@ -72,6 +76,7 @@ export const MainMenu = () => {
               <Link href="/settings">settings</Link>
             </li>
           </div>
+          <MenuLink href="/rules">📒 Rules</MenuLink>
           <MenuLink href="/browse">🌎 Browse</MenuLink>
           <MenuLink href="/search">🔍 Search</MenuLink>
           <MenuLink href="/lobby">🐱 Lobby</MenuLink>
@@ -89,16 +94,19 @@ export const MainMenu = () => {
           {roles && roles.includes("events") && (
             <MenuLink href="/events">📅 Events</MenuLink>
           )}
-
         </div>
-      )} {
+      )}{" "}
+      {
         // #d70072
       }
       <div className="sidemenu-admin">
-        <SupportLink href="https://www.patreon.com/vrerp">💰 Support us!</SupportLink>
-        <LovenseLink href="https://www.lovense.com/r/ocnexm">💕 Buy Lovense</LovenseLink>
+        <SupportLink href="https://www.patreon.com/vrerp">
+          💰 Support us!
+        </SupportLink>
+        <LovenseLink href="https://www.lovense.com/r/ocnexm">
+          💕 Buy Lovense
+        </LovenseLink>
       </div>
-
       {hasRole(user, "admin") && (
         <div className="sidemenu-admin">
           <MenuLink href="/admin">🔔 Admin</MenuLink>

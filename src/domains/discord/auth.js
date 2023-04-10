@@ -50,9 +50,9 @@ async function joinDiscordServer(discordProfile) {
       url: `https://discord.com/api/v10/guilds/${process.env.MAIN_DISCORD_ID}/members/${discordProfile.id}`,
       method: "PUT",
       data: { access_token: discordProfile.accessCode.replace("Bearer ", "") },
-      headers: { 
+      headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bot ${process.env.DISCORD_BOT_TOKEN}`
+        Authorization: `Bot ${process.env.DISCORD_BOT_TOKEN}`,
       },
     });
     if (d.status === 201 || d.status === 204) {
@@ -161,7 +161,7 @@ router.get("/api/discord/auth", async (req, res, next) => {
   if (!discordProfile) {
     return res.redirect("/");
   }
-  
+
   console.log("authorizing discord user", discordProfile);
   // create new user, or log in
   let user = await User.findOne({ discordId: discordProfile.id }).lean().exec();
@@ -176,11 +176,12 @@ router.get("/api/discord/auth", async (req, res, next) => {
     Events.emit(EventTypes.LOGIN, user._id);
   }
 
-
   console.log("Connecting user to discord server.");
   let joined = await joinDiscordServer(discordProfile);
-  joined ? console.log("User joined the discord server.") : console.log("User was not able to join the discord server.");
-  
+  joined
+    ? console.log("User joined the discord server.")
+    : console.log("User was not able to join the discord server.");
+
   const redirect = req.query.state ? req.query.state : "/";
   req.session.save(() => res.redirect(redirect));
 });

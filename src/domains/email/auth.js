@@ -42,11 +42,9 @@ router.post("/api/users", async (req, res) => {
   }
   if (user.loginCodes.length > 5) {
     console.error("Excessive login code requests for user", email);
-    return res
-      .status(400)
-      .send({
-        error: "Exceeded quota, please create a support ticket on discord.",
-      });
+    return res.status(400).send({
+      error: "Exceeded quota, please create a support ticket on discord.",
+    });
   }
   const code = Math.random().toString(36).substring(2).substring(0, 8);
   await User.findOneAndUpdate(

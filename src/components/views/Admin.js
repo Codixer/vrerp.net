@@ -256,8 +256,8 @@ const AdminAssets = () => {
 
 const Admin = ({ section, id }) => (
   <div>
-    <Helmet title={`admin - vrerp.net`} />
-    <Link href="/admin">admin</Link>
+    <Helmet title={`Admin - vrerp.net`} />
+    <Link href="/admin">Admin</Link>
     <br />
     {section === undefined && (
       <div>

@@ -25,7 +25,7 @@ export const Rules = () => (
     <li>No IRL selfies, or IRL pics of any kind on the site</li>
     <li>No paid-for ERP services, this is a bannable offense</li>
     <li>No drama, or venting, only good vibes</li>
-    <li>Be kind, and lewd💕 to eachother!</li>
+    <li>Be kind, and lewd💕 to each other!</li>
     <br />
     <h3>In-VR ERP rules</h3>
     Unless you&apos;ve agreed with your partner otherwise, default rules for
@@ -45,7 +45,7 @@ export const Rules = () => (
       your partner is riding on top of you is super impolite.
     </li>
     <li>No photography without consent</li>
-    <li>Please be kind, attentive, and lewd to eachother! 💕</li>
+    <li>Please be kind, attentive, and lewd to each other! 💕</li>
     <br />
     You can report violations on the site{" "}
     <a href="https://vrerp.net/report">https://vrerp.net/report</a>, directly on
@@ -82,16 +82,16 @@ export const RulesUpdates = () => (
 export const RulesPage = () => (
   <div>
     <Helmet
-      title={`Rules on vrerp.net and the vr erp discord`}
+      title={`Rules on vrerp.net and the vrerp discord`}
       meta={[
-        { name: "description", content: "Be kind, and lewd 💕 to eachother!" },
+        { name: "description", content: "Be kind, and lewd 💕 to each other!" },
         {
           property: "og:title",
           content: "Rules on vrerp.net and the vr erp discord",
         },
         {
           property: "og:description",
-          content: "Be kind, and lewd 💕 to eachother!",
+          content: "Be kind, and lewd 💕 to each other!",
         },
         { property: "og:site_name", content: "vrerp.net" },
       ]}
