@@ -23,7 +23,7 @@
     "@dracula/dracula-ui": "^0.8.1",
     "@preact/signals": "^1.1.2",
     "@vvo/tzdb": "^6.74.0",
-    "aws-sdk": "^2.1053.0",
+    "aws-sdk": "^2.1390.0",
     "axios": "^0.24.0",
     "babel-loader": "^8.2.3",
     "babel-plugin-transform-react-jsx": "^6.24.1",
