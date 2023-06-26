@@ -182,9 +182,6 @@ export const LandingPage = () => {
         How do I join?
       </Heading>
       <LoginFields />
-      <Heading size="md" p="sm">
-        Join our discord server to chat
-      </Heading>
       {/* <center>
         <a
           href={"https://discord.gg/HDZQP6Wb6f"}
