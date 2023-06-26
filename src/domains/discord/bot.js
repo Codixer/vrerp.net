@@ -256,7 +256,7 @@ client.on("guildMemberAdd", async (member) => {
     return;
   }
   const discordId = _.get(member, "user.id");
-  const discord = `${member.user.username}#${member.user.discriminator}`;
+  const discord = `${member.user.username}`;
   let user = await User.findOne({ discordId }).lean().exec();
   if (user) {
     await syncMemberRoles(user._id);
@@ -285,7 +285,7 @@ client.on("guildMemberAdd", async (member) => {
     verification = await Verification.create({
       _id: generateSnowflake(),
       discordId,
-      discord: `${member.user.username}#${member.user.discriminator}`,
+      discord: `${member.user.username}`,
       requestedBy: [member.guild.id],
       status: "draft",
     });

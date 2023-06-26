@@ -30,7 +30,7 @@ async function importVerifications() {
         hasVerified.push({
           _id: generateSnowflake(),
           discordId: member.user.id,
-          discord: `${member.user.username}#${member.user.discriminator}`,
+          discord: `${member.user.username}`,
           status: "verified",
         });
       }

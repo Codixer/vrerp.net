@@ -81,7 +81,7 @@ async function basicData(req, res, next) {
       { new: true }
     );
     if (user.roles && user.roles.includes("banned")) {
-      return res.send("banned. DM Codixer#2936 to appeal.");
+      return res.send("banned. DM codixer to appeal.");
     }
   }
   next();

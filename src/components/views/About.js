@@ -29,7 +29,7 @@ const About = () => (
     <div className="drac-p-sm">
       <Text>
         vrerp.net is founded, and ran by (people), you can contact him via
-        Codixer#2936 on Discord, or{" "}
+        codixer on Discord, or{" "}
         <a href="mailto:contact@vrerp.net">contact@vrerp.net</a>.
       </Text>
     </div>
