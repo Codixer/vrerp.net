@@ -283,7 +283,7 @@ async function syncMemberStatus() {
         if (!member.user || !member.user.id) {
           return;
         }
-        const discord = `${member.user.username}#${member.user.discriminator}`;
+        const discord = `${member.user.username}`;
         console.log(discord);
         await updateUserStatus(
           { discordId: member.user.id },

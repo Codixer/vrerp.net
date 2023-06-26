@@ -91,7 +91,7 @@ export const CalendarEventEdit = ({ id }) => {
         value={form.creatorDiscord}
         error={errors.creatorDiscord}
         className="w240"
-        placeholder="username#0000"
+        placeholder="username"
       >
         Your discord:{" "}
       </InputBox>
