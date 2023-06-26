@@ -8,6 +8,7 @@ const Footer = () => (
       vrerp.net&nbsp;&copy;&nbsp;2022-2023&nbsp; 
       <wbr />
       - 
+      
       <Link href="/rules">Rules</Link>&nbsp;&nbsp;
       <Link href="/report">Report</Link>&nbsp;&nbsp;
       <Link href="/about">About</Link>
