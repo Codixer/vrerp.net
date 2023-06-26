@@ -122,11 +122,11 @@ router.get("/api/discord/link", async (req, res, next) => {
   if (testUser) {
     console.error("discord user already", req.user, testUser);
     res.send(
-      "There is a user with this discord profile already -we need to delete it before you can link it. DM Codixer#2936 to troubleshoot"
+      "There is a user with this discord profile already -we need to delete it before you can link it. DM codixer to troubleshoot"
     );
     return;
   }
-  const discord = `${discordProfile.username}#${discordProfile.discriminator}`;
+  const discord = `${discordProfile.username}`;
   await User.findOneAndUpdate(
     { _id: req.session.userId },
     { discord, discordId: discordProfile.id }
@@ -142,7 +142,7 @@ router.get("/api/discord/link", async (req, res, next) => {
     ) {
       console.error("discord user already", req.user, previousStatus);
       res.send(
-        "There is a user with this discord profile already -we need to delete it before you can link it. DM Codixer#2936 to troubleshoot"
+        "There is a user with this discord profile already -we need to delete it before you can link it. DM codixer to troubleshoot"
       );
       return;
     }
@@ -165,7 +165,7 @@ router.get("/api/discord/auth", async (req, res, next) => {
   console.log("authorizing discord user", discordProfile);
   // create new user, or log in
   let user = await User.findOne({ discordId: discordProfile.id }).lean().exec();
-  const discord = `${discordProfile.username}#${discordProfile.discriminator}`;
+  const discord = `${discordProfile.username}`;
   if (!user) {
     user = await createUser({ discord, discordId: discordProfile.id });
     req.session.userId = user._id;

@@ -3,7 +3,7 @@ export const testingDiscordProfile = {
   username: "Silver",
   avatar: "3521408f644d28643fc8822c7533ef51",
   avatar_decoration: null,
-  discriminator: "5243",
+  // discriminator: "0", // new username system impl
   public_flags: 0,
   flags: 0,
   banner: null,

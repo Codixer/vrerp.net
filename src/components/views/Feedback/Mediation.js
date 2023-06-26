@@ -65,7 +65,7 @@ const ReportMediation = () => {
       )}
       <br />
       <br />
-      To appeal this decision, DM Codixer#2936
+      To appeal this decision, DM codixer
       <br />
       <br />
       <br />
