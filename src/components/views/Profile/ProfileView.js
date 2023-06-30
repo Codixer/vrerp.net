@@ -105,7 +105,7 @@ const ProfileView = ({ id, controls, showMatchbox }) => {
       <br />
       {profile.discord && (
         <div>
-          <b>Discord: {profile.discord}</b>
+          <b>Discord: {String(profile.discord).split('#')[0]}</b>
           <br />
         </div>
       )}

@@ -52,7 +52,7 @@ const ProfileEditBasic = ({ id, url }) => {
       <b>Info:</b>
       {user.discordId && (
         <div className="drac-p-sm">
-          <div>Discord: {profile.discord} </div>
+          <div>Discord: {String(profile.discord).split('#')[0]} </div>
         </div>
       )}
       {!user.discordId && (
