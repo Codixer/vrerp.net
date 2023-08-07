@@ -70,10 +70,10 @@ export const MainMenu = () => {
           <MenuLink href={`/${profile.url}`}>@{profile.username}</MenuLink>
           <div className="sidemenu-item">
             <li>
-              <Link href="/profile">edit bio</Link>
+              <Link href="/profile">Edit Profile</Link>
             </li>
             <li>
-              <Link href="/settings">settings</Link>
+              <Link href="/settings">Settings</Link>
             </li>
           </div>
           <MenuLink href="/rules">📒 Rules</MenuLink>
