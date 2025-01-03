@@ -34,8 +34,7 @@ router.get("/api/search", async (req, res, next) => {
   if (req.query.q) {
     const kinks = (await Kink.find({}).lean().exec()).map((k) => k.name);
     const qs = req.query.q
-      .split(" ")
-      .filter((q) => !["female"].includes(q.toLowerCase()));
+      .split(" ");
     qs.forEach((q) => {
       const qfilters = [];
       if (schemaValues[q.toLowerCase()]) {
