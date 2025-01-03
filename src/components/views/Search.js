@@ -41,8 +41,7 @@ const Search = () => {
               val.values.map((val) =>
                 typeof val === "string" ? val : val.display
               )
-            )
-            .filter((t) => !["female"].includes(t.toLowerCase())),
+            ),
         []
       ),
     [schema]
