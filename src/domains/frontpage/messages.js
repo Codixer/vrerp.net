@@ -57,7 +57,7 @@ const frontpageMessages = [
     role: "featured",
     message: [
       "You're super cute 💕",
-      "Codixer would love to feature a few selected super cute peeps on the frontpage, and on the site.",
+      "The High Council would love to feature a few selected super cute peeps on the frontpage, and on the site.",
       "Can we feature your profile?",
       "(You can change this anytime in the settings menu)",
     ],

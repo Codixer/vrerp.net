@@ -65,7 +65,7 @@ const ReportMediation = () => {
       )}
       <br />
       <br />
-      To appeal this decision, DM codixer
+      To appeal this decision, please contact the staff team by creating a ticket on the discord.
       <br />
       <br />
       <br />

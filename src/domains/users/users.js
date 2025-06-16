@@ -81,7 +81,7 @@ async function basicData(req, res, next) {
       { new: true }
     );
     if (user.roles && user.roles.includes("banned")) {
-      return res.send("banned. DM codixer to appeal.");
+      return res.send("Due to a moderation action performed on your profile, the staff team and/or high council have decided to ban your account. For more information, contact us through the ticketing system on our Discord. If you are banned on the Discord, please contact 'codixer' directly.");
     }
   }
   next();
